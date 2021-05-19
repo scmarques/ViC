@@ -1,2 +1,0 @@
-com/sephora/calculoidadelista/BuildConfig.java
- com.sephora.calculoidadelista.BuildConfig
