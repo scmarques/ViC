@@ -12,6 +12,9 @@ _________________________________________________________________
 * Tarefa1 --> Tarefa inicial para conhecimento da IDE e utilização de variáveis em Kotlin.
   
 * CalculoIdade --> Aplicação com utilização de Null-safety e estruturas de decisão que recebe a data de nascimento e retorna quantos dias faltam para o próximo aniversário do usuário.
+  
+* CalculoIdadeLista --> Aplicação com utilização de Collections que recebe e armazena em Lista o nome, a data de nascimento e quantos dias faltam para o próximo aniversário do usuário.
+
 
 &nbsp;
 
