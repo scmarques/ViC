@@ -53,17 +53,22 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext,"Computado com : ${radio.text}",
                         Toast.LENGTH_SHORT).show()
 
-                    if (radio.text.toString() == "Recursivo") {
+                    if (radio.text.toString() == "Recursivo" && num.toInt() <=40) {
                         for (i in 1 until num.toLong()) {
                             msg += (recursiva(i))
                             msg += " | "
                         }
-                    } else {
+                    } else if (radio.text.toString() == "Iterativo") {
                         msg = ""
-                        var lista = (fibonacciK(num.toInt()).take(num.toInt()).toList())
+                        var lista = (fibonacciK(num.toULong()).take(num.toInt()).toList())
                         for (i in lista){
                             msg += "$i | "
                         }
+                    }
+                    else{
+                        msg = "Selecione uma opção. Atenção: acima da posição 45, selecionar ITERATIVO."
+                        Toast.makeText(applicationContext,"Selecione uma opção!",
+                            Toast.LENGTH_LONG).show()
                     }
                     resultado.visibility = View.VISIBLE
                     resultadoT.visibility = View.VISIBLE
@@ -72,10 +77,7 @@ class MainActivity : AppCompatActivity() {
                     saibaTxt.visibility = View.VISIBLE
                     saibaMais.visibility = View.VISIBLE
 
-                }else{
-                    Toast.makeText(applicationContext,"Selecione um algoritmo!",
-                        Toast.LENGTH_SHORT).show()
-                }
+                    }
                 campoDeTexto?.setText("")
                 msg = "0 | "
 
@@ -92,7 +94,7 @@ class MainActivity : AppCompatActivity() {
     fun recursiva(n: Long): Long = if (n < 2) n else recursiva(n - 1) + recursiva(n - 2)
 
 
-    fun fibonacciK(num : Int): Sequence<Int> {
+    fun fibonacciK(num : ULong): Sequence<Int> {
             return generateSequence(
                 Pair(0, 1),
                 { Pair(it.second, it.first + it.second) }).map { it.first }
