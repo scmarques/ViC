@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Fibonacci</string>
+    <string name="recursivo">Recursivo</string>
+    <string name="selecione">Selecione o algoritmo desejado:</string>
+    <string name="iterativo">Iterativo</string>
+    <string name="insira_a_posi_o_que_deseja_consultar_na_sequ_ncia_de_fibonacci">Insira a posição que deseja consultar na sequência de Fibonacci:</string>
+    <string name="quer_saber_mais_sobre_a_sequ_ncia_de_fibonacci">Quer saber mais sobre a sequência de Fibonacci?</string>
+    <string name="saiba_mais">Saiba mais!</string>
+    <string name="tituloInicial">Insira a posição que deseja consultar na sequência de Fibonacci:</string>
+</resources>

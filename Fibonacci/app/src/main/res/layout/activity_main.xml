@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:scrollbarAlwaysDrawVerticalTrack="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074">
+
+        <LinearLayout
+            android:id="@+id/Linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/tituloInicial"
+                android:textAlignment="center"
+                android:textColor="@color/purple_700"
+                android:textSize="9.4pt"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="141dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/edtNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="125dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="125dp"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="125dp"
+                tools:layout_editor_absoluteY="186dp" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_marginTop="10pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                >
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selecione"
+                    android:textColor="@color/purple_200"
+                    android:textSize="8pt"
+                    />
+                <RadioButton
+                    android:id="@+id/btnFib1"
+                    android:textSize="8pt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recursivo"
+                    android:textColor="@color/purple_200"
+                    android:onClick="radio_button_click"
+                    />
+                <RadioButton
+                    android:id="@+id/btnFib2"
+                    android:textSize="8pt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/iterativo"
+                    android:textColor="@color/purple_200"
+                    android:onClick="radio_button_click"
+                    />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnEnviar"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Enviar"
+                android:textSize="7pt"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold
+
+"
+                app:icon="@android:drawable/ic_menu_send"
+                tools:layout_editor_absoluteX="151dp"
+                tools:layout_editor_absoluteY="291dp" />
+
+            <TextView
+                android:id="@+id/txtResultadoT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/purple_700"
+                android:textSize="9pt"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:layout_editor_absoluteY="141dp" />
+
+            <TextView
+                android:id="@+id/txtResultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp"
+                android:text="@string/insira_a_posi_o_que_deseja_consultar_na_sequ_ncia_de_fibonacci"
+                android:textColor="@color/purple_700"
+                android:textSize="9pt"
+                android:visibility="invisible"
+                tools:layout_editor_absoluteY="141dp" />
+            <TextView
+                android:id="@+id/txtSaiba"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="40dp"
+                android:text="@string/quer_saber_mais_sobre_a_sequ_ncia_de_fibonacci"
+                android:textStyle="italic|bold"
+                android:textColor="@color/purple_700"
+                android:textSize="8pt"
+                android:visibility="invisible"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteY="141dp" />
+
+            <Button
+                android:id="@+id/btnSaibaMais"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:onClick="getUrlFromIntent"
+                android:visibility="invisible"
+                android:layout_marginTop="20dp"
+                android:text="@string/saiba_mais"
+                android:textSize="7pt"
+                app:icon="@android:drawable/ic_menu_set_as"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="151dp"
+                tools:layout_editor_absoluteY="291dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
