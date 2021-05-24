@@ -1,22 +1,26 @@
-## ViC - Projeto Vitória Code 💻 👩‍🎓 🚀
+## Sequência de Fibonacci 💻
 
 #
 
-#### Disponibilização das tarefas e projetos realizados durante o projeto de formação feminina em Android feito pelo Picpay em parceria com o Elas Programam e Se Candidate, Mulher! (mai/21 a ago/21).
-Professora Sandyara Peres | Coordenadora Danielle Costa
-
-&nbsp;
 _________________________________________________________________
-### **Atividades**
+### **Descrição do projeto** 🎯
 -----------------------------------------------------------------
-* Tarefa1 --> Tarefa inicial para conhecimento da IDE e utilização de variáveis em Kotlin.
-  
-* CalculoIdade --> Aplicação com utilização de Null-safety e estruturas de decisão que recebe a data de nascimento e retorna quantos dias faltam para o próximo aniversário do usuário.
-  
-* CalculoIdadeLista --> Aplicação com utilização de Collections que recebe e armazena em Lista o nome, a data de nascimento e quantos dias faltam para o próximo aniversário do usuário.
 
-* Fibonacci --> Aplicação que exibe a sequência de Fibonacci até a posição inserida pelo usuário com a possibilidade de utilização de algoritmo iterativo ou recursivo.
+* Aplicação que exibe a sequência de Fibonacci até a posição inserida pelo usuário. 
+* Na tela, são exibidas as opções para que o usuário escolha o algoritmo que deseja utilizar para o cálculo da sequência: iterativo ou recursivo.
 
+_________________________________________________________________
+### **Funcionalidades** 🏁
+-----------------------------------------------------------------
+
+* 🏆 É retornada na tela principal a sequência até o número definido pelo usuário.
+* 🏆 O usuário pode escolher o algoritmo utilização pela aplicação para o cálculo da sequência.
+* 🏆 Há a função "Saiba mais" que traz um link para redirecionar o usuário para um site externo com informações sobre a sequência.
+* 🏆 Foram inseridas mensagens de erro para evitar que o usuário deixasse algum dos campos em branco.
+
+#
+
+Status do Projeto: Concluído ✔️
 &nbsp;
 
 #
