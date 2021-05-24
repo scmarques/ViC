@@ -24,3 +24,4 @@ Status do Projeto: Concluído ✔️
 &nbsp;
 
 #
+<img src=https://github.com/scmarques/ViC/blob/master/Fibonacci/Screen_2.PNG>
