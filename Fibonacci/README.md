@@ -24,4 +24,6 @@ Status do Projeto: Concluído ✔️
 &nbsp;
 
 #
-<img src=https://github.com/scmarques/ViC/blob/master/Fibonacci/Screen_2.PNG>
+Antes da inserção          |  Após inserção da posição
+:-------------------------:|:-------------------------:
+![](https://github.com/scmarques/ViC/blob/master/Fibonacci/Screen_1.png)  |  ![](https://github.com/scmarques/ViC/blob/master/Fibonacci/Screen_2.PNG)
