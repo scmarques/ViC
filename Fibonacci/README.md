@@ -1,0 +1,22 @@
+## ViC - Projeto Vitória Code 💻 👩‍🎓 🚀
+
+#
+
+#### Disponibilização das tarefas e projetos realizados durante o projeto de formação feminina em Android feito pelo Picpay em parceria com o Elas Programam e Se Candidate, Mulher! (mai/21 a ago/21).
+Professora Sandyara Peres | Coordenadora Danielle Costa
+
+&nbsp;
+_________________________________________________________________
+### **Atividades**
+-----------------------------------------------------------------
+* Tarefa1 --> Tarefa inicial para conhecimento da IDE e utilização de variáveis em Kotlin.
+  
+* CalculoIdade --> Aplicação com utilização de Null-safety e estruturas de decisão que recebe a data de nascimento e retorna quantos dias faltam para o próximo aniversário do usuário.
+  
+* CalculoIdadeLista --> Aplicação com utilização de Collections que recebe e armazena em Lista o nome, a data de nascimento e quantos dias faltam para o próximo aniversário do usuário.
+
+* Fibonacci --> Aplicação que exibe a sequência de Fibonacci até a posição inserida pelo usuário com a possibilidade de utilização de algoritmo iterativo ou recursivo.
+
+&nbsp;
+
+#
