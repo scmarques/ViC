@@ -17,6 +17,8 @@ _________________________________________________________________
 
 * Fibonacci --> Aplicação que exibe a sequência de Fibonacci até a posição inserida pelo usuário com a possibilidade de utilização de algoritmo iterativo ou recursivo.
 
+* SimulaElevador --> Aplicação que simula o funcionamento de um elevador com opção para alteração de andar e inserção de passageiro.
+
 &nbsp;
 
 #
