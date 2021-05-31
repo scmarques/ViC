@@ -13,7 +13,7 @@ data class Elevador(private var lotacao : Int,
 
 
         if (andarAtual != 0){
-            msg = "$andarAtual º"
+            msg = "$andarAtual º\nandar"
         }
         else {
             msg = "TÉRREO"
