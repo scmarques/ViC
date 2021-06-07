@@ -15,7 +15,7 @@ _________________________________________________________________
 
 * 🏆 Exibição em tela do andar atual durante a simulação de subida/descida dos andares.
 * 🏆 Exibição de aviso por Toast para que o usuário respeite a capacidade máxima de lotação (5 pessoas).
-* 🏆 Exibição de mensagen de erro para evitar que o usuário insira algum andar inválido (Intervalo possível: 0 a 7).
+* 🏆 Exibição de mensagem de erro para evitar que o usuário insira algum andar inválido (Intervalo possível: 0 a 7).
 
 #
 
