@@ -19,6 +19,8 @@ _________________________________________________________________
 
 * SimulaElevador --> Aplicação que simula o funcionamento de um elevador com opção para alteração de andar e inserção de passageiro.
 
+* MinhaAgenda --> Aplicação de agenda telefônica com opção para inserção de contato com os campos de nome, telefone, referência ou e-mail. Há também a possibilidade de busca pelo nome entre os registros.
+  
 &nbsp;
 
 #
