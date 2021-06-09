@@ -12,80 +12,66 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="73dp"
-        android:layout_marginEnd="328dp"
-        android:layout_marginBottom="738dp"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="0.7"
         android:text="Térreo"
         android:textColor="@color/black"
-        android:textSize="18pt"
+        android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="43dp"
-        android:layout_marginEnd="255dp"
-        android:layout_marginBottom="791dp"
         android:text="@string/voceEsta"
         android:textColor="@color/black"
-        android:textSize="10pt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnEnviar"
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="332dp"
-        android:layout_height="55dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="52dp"
         android:backgroundTint="#6f8eff"
         android:shadowColor="@color/black"
+        android:elevation="10dp"
         android:text="@string/ir_para"
         android:textColor="@color/white"
-        android:textSize="7.5pt"
+        android:letterSpacing="0"
+        android:textSize="19sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textAlguem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtAndar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/edtAndar" />
 
     <EditText
         android:id="@+id/edtAndar"
-        android:layout_width="332dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="556dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="293dp"
         android:background="#c4c4c4"
         android:ems="10"
         android:hint="@string/digite_um_andar"
         android:inputType="number"
-        android:textAlignment="center"
+        android:padding="15dp"
         android:textColorHint="#9b9b9b"
-        android:textSize="8pt"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btnSair"
@@ -93,15 +79,15 @@
         android:layout_width="126dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="#C91616"
         android:text="Sair"
         android:textColor="@color/white"
-        android:textSize="8pt"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/btnEnviar"
+        app:layout_constraintTop_toBottomOf="@+id/textAlguem" />
 
     <Button
         android:id="@+id/btnEntrar"
@@ -109,102 +95,111 @@
         android:layout_width="126dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="#20993B"
         android:text="Entrar"
         android:textColor="@color/white"
-        android:textSize="8pt"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/btnEnviar"
+        app:layout_constraintTop_toBottomOf="@+id/textAlguem" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="262dp"
         android:layout_height="249dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="185dp"
-        android:layout_marginEnd="85dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgUp"
         app:srcCompat="@drawable/background_circle" />
 
     <TextView
         android:id="@+id/textAlguem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="662dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginBottom="191dp"
-        android:gravity="center"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="64dp"
         android:text="Alguém irá..."
+        android:textFontWeight="700"
         android:textColor="@color/black"
-        android:textSize="10pt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSair"
+        app:layout_constraintTop_toBottomOf="@+id/btnEnviar" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="316dp"
-        android:layout_marginEnd="141dp"
-        android:gravity="center"
+        android:layout_marginStart="62dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center_horizontal"
         android:text="pessoas no \nelevador"
         android:textColor="@color/white"
-        android:textSize="12pt"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/txtLotacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="167dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="167dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="55dp"
+        android:gravity="center_horizontal"
         android:text="0/5 "
         android:textColor="@color/white"
-        android:textSize="28pt"
+        android:textSize="62sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imgUp"
         android:layout_width="37dp"
         android:layout_height="38dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="188dp"
+        android:layout_marginStart="40dp"
         android:background="#C3BECA"
         android:backgroundTint="#DFC2FB"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtAndar"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@android:drawable/stat_sys_upload_done" />
 
     <ImageView
         android:id="@+id/imgDown"
         android:layout_width="37dp"
         android:layout_height="38dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="188dp"
+        android:layout_marginStart="40dp"
         android:background="#C3BECA"
         android:backgroundTint="#DFC2FB"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtAndar"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@android:drawable/stat_sys_download_done" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlHalfHor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlHalfVer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdl75Hor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
