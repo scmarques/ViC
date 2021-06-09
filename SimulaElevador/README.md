@@ -21,4 +21,4 @@ _________________________________________________________________
 
 Status do Projeto: Concluído ✔️
 #
-<img src = "https://github.com/scmarques/ViC/blob/master/SimulaElevador/Screenshot_Elevador.png" width="280" height="500">
+<img src = "https://github.com/scmarques/ViC/blob/master/SimulaElevador/Screenshot_Elevador.png" width="280" height="600">
