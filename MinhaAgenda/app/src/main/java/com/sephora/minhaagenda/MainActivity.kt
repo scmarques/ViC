@@ -74,15 +74,15 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
-
+                contatos.sortBy { it.nome.lowercase() }
+                edtRef.setText("")
+                edtTelefone.setText("")
+                edtNome.setText("")
             }
-            contatos.sortBy { it.nome.lowercase() }
-            edtRef.setText("")
-            edtTelefone.setText("")
-            edtNome.setText("")
         }
 
         btnPesquisar.setOnClickListener{
+            limparErro()
             var msg = ""
             val pesquisa = edtPesquisar?.text.toString().lowercase()
             if (pesquisa.isEmpty()) edtPesquisar.error="Insira o nome a ser pesquisado!"
@@ -90,10 +90,9 @@ class MainActivity : AppCompatActivity() {
                 for (i in contatos){
                     if (i.pesquisaNome(i, pesquisa)) msg += i.exibirContato()
                 }
+                if (msg.isEmpty()) txtContatos.setText("Nome não encontrado.")
+                else txtContatos.setText(msg)
             }
-
-            if (msg.isEmpty()) txtContatos.setText("Nome não encontrado.")
-            else txtContatos.setText(msg)
 
             edtPesquisar.setText("")
             btnExibirTodos.visibility = View.INVISIBLE
@@ -101,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnExibirTodos.setOnClickListener{
+            limparErro()
             if (contatos.size > 0){
                 var msg = ""
                 for (i in contatos){
@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity() {
 
 
         btnLimpar.setOnClickListener{
+            limparErro()
             txtContatos.setText("")
             btnExibirTodos.visibility = View.VISIBLE
             btnLimpar.visibility = View.INVISIBLE
@@ -147,5 +148,13 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    fun limparErro (){
+        edtTelefone.setError(null)
+        edtPesquisar.setError(null)
+        edtNome.setError(null)
+        edtRef.setError(null)
+    }
+
 
 }

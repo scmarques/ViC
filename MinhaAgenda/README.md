@@ -20,7 +20,7 @@ _________________________________________________________________
 * 🏆 É retornada na tela principal, na metade inferior, o resultado da pesquisa pelo nome. Para melhorar a visualização, foi utilizado scroll view em 50% da tela.
 * 🏆 Há a função "Limpar tela" que limpa os resultados exibidos.
 * 🏆 Foram inseridas mensagens de erro para evitar que o usuário deixasse algum dos campos em branco.
-
+* 🏆 Opção de tema noturno.
 #
 
 Status do Projeto: Concluído ✔️
@@ -30,3 +30,8 @@ Status do Projeto: Concluído ✔️
 Tela inicial         |  Tela após pesquisa por nome
 :-------------------------:|:-------------------------:
 ![](https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_1.png)  |  ![](https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_2.png)
+
+
+#
+Tema noturno
+![](https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_3.png)  
