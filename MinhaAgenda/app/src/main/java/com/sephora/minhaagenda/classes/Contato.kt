@@ -1,6 +1,6 @@
 package com.sephora.minhaagenda.classes
 
-open class Contato(open val nome : String, open val telefone : Long){
+open class Contato(open val nome : String, open val nomeOrdena : String, open val telefone : String){
 
     open fun exibirContato () : String{
 
@@ -8,7 +8,7 @@ open class Contato(open val nome : String, open val telefone : Long){
     }
 
     open fun pesquisaNome (contato : Contato, pesquisa : String) : Boolean{
-        if (contato.nome.lowercase().contains(pesquisa)) return true
+        if (contato.nomeOrdena.contains(pesquisa)) return true
         return false
     }
 }

@@ -1,6 +1,7 @@
 package com.sephora.minhaagenda.classes
 
-class Trabalho(nome : String, telefone : Long, val email : String) : Contato (nome, telefone){
+class Trabalho(nome : String,  nomeOrdena : String, telefone : String,
+               val email : String) : Contato (nome, nomeOrdena, telefone){
 
     override fun exibirContato () : String{
 

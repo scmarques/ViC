@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         edtPesquisar = findViewById(R.id.edtPesquisar)
         edtNome = findViewById(R.id.edtNome)
         edtTelefone = findViewById(R.id.edtTel)
-        //edtTelefone.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+        edtTelefone.addTextChangedListener(PhoneNumberFormattingTextWatcher())
         txtContatos = findViewById(R.id.txtContatos)
         rbTrabalho = findViewById(R.id.rbTrabalho)
         rbPessoal = findViewById(R.id.rbPessoal)
@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity() {
         btnSalvar.setOnClickListener{
             val nome = edtNome?.text.toString()
             if (nome.isEmpty())  edtNome.error="Insira o nome!"
+            val nomeOrdena = removeAcento(nome.uppercase())
+
 
             val tel = edtTelefone?.text.toString()
             if (tel.isEmpty()) edtTelefone.error="Insira o número do telefone!"
@@ -64,12 +66,12 @@ class MainActivity : AppCompatActivity() {
             if (!((nome.isEmpty() || (tel.isEmpty()) || (refOuEmail.isEmpty())))){
                 when (rdgTipo.checkedRadioButtonId){
                     (rbPessoal.id) ->{
-                        val novoP = Pessoal (nome, tel.toLong(), refOuEmail)
+                        val novoP = Pessoal (nome, nomeOrdena, tel, refOuEmail)
                         contatos.add(novoP)
                     }
 
                     (rbTrabalho.id)->{
-                        val novoT = Trabalho (nome, tel.toLong(), refOuEmail)
+                        val novoT = Trabalho (nome, nomeOrdena, tel, refOuEmail)
                         contatos.add(novoT)
 
                     }
@@ -87,8 +89,9 @@ class MainActivity : AppCompatActivity() {
             val pesquisa = edtPesquisar?.text.toString().lowercase()
             if (pesquisa.isEmpty()) edtPesquisar.error="Insira o nome a ser pesquisado!"
             else{
+                val pesquisar = removeAcento(pesquisa.uppercase())
                 for (i in contatos){
-                    if (i.pesquisaNome(i, pesquisa)) msg += i.exibirContato()
+                    if (i.pesquisaNome(i, pesquisar)) msg += i.exibirContato()
                 }
                 if (msg.isEmpty()) txtContatos.setText("Nome não encontrado.")
                 else txtContatos.setText(msg)
@@ -147,6 +150,38 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+    }
+    fun removeAcento(s: String):String{
+
+        if (s == null) {
+            return "";
+        }
+
+        val chars: CharArray = s.toCharArray()
+
+        var sb = StringBuilder(s)
+        var cont = 0
+
+        while (chars.size > cont) {
+            var c: Char
+            c = chars[cont]
+            var c2:String = c.toString()
+            c2 = c2.replace("Ã", "A")
+            c2 = c2.replace("Õ", "O")
+            c2 = c2.replace("Ç", "C")
+            c2 = c2.replace("Á", "A")
+            c2 = c2.replace("Í", "I")
+            c2 = c2.replace("Ó", "O")
+            c2 = c2.replace("Ê", "E")
+            c2 = c2.replace("É", "E")
+            c2 = c2.replace("Ú", "U")
+
+            c = c2.single()
+            sb.setCharAt(cont, c)
+            cont++
+        }
+        return sb.toString()
+
     }
 
     fun limparErro (){
