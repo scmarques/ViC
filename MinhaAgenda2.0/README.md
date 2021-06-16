@@ -29,9 +29,9 @@ Status do Projeto: Concluído ✔️
 #
 Tela inicial         |  Tela após pesquisa por nome
 :-------------------------:|:-------------------------:
-![](https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_1.png)  |  ![](https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_2.png)
-
+<img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_1.png" width="280" height="600">  |  <img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_2.png" width="280" height="600">
 
 #
-Tema noturno
-![](https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_3.png)  
+Tema noturno 
+<img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_3.png" width="280" height="600"> | <img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda/Screen_4.png" width="280" height="600"> 
+:-------------------------:|:-------------------------:
