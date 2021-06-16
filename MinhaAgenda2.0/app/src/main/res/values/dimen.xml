@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mediumTxt">20sp</dimen>
+    <dimen name="smallTxt">16sp</dimen>
+    <dimen name="xsmallTxt">8sp</dimen>
+    <dimen name="largeTxt">32sp</dimen>
+</resources>

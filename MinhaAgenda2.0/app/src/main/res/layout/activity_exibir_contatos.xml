@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fundoBege"
+    tools:context=".ExibirContatos">
+
+        <TextView
+            android:id="@+id/imgContato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/lato"
+            android:text="Contatos"
+            android:textAllCaps="false"
+            android:textColor="@color/cinzaEscuro"
+            android:textSize="@dimen/largeTxt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/gdlVer"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/title_inferior" />
+
+        <ImageView
+            android:id="@+id/imgTitleInferior"
+            android:layout_width="60dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gdlHor"
+            app:srcCompat="@drawable/title_inferior" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlVer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlHor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.10" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlScroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="110dp" />
+
+        <ScrollView
+            android:id="@+id/myScrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gdlScroll">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txtContatos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="40dp"
+                            android:textSize="@dimen/mediumTxt"
+                            app:layout_constraintBottom_toTopOf="@+id/btnReturn"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:text=" \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" />
+
+                        <Button
+                            android:id="@+id/btnReturn"
+                            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginBottom="50dp"
+                            android:letterSpacing="0"
+                            android:onClick="onReturnClick"
+                            android:text="Retornar ao menu"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/smallTxt"
+                            app:icon="@drawable/ic_baseline_arrow_back_ios_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
