@@ -25,7 +25,7 @@ Status do Projeto: Em aperfeiçoamento ✔️
 &nbsp;
 
 #
-Tela inicial         |  Tela após pesquisa por nome
+Tela inicial         |  Tela de cadastro
 :-------------------------:|:-------------------------:
 <img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda2.0/Screen_1.png" width="280" height="600">  |  <img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda2.0/Screen_2.png" width="280" height="600">
 
