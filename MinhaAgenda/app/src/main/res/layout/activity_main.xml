@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/FundoTela"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlHor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53" />
+
+    <EditText
+
+        android:id="@+id/edtNome"
+        style="@style/TextoPadrao"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:hint="@string/nome"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edtTel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtTel"
+        style="@style/TextoPadrao"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:hint="@string/telefone"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/rdgTipo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rdgTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/edtReferencia"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbPessoal"
+            style="@style/DarkBlueRadioButton"
+            android:checked="true"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/pessoal" />
+
+        <RadioButton
+            android:id="@+id/rbTrabalho"
+            style="@style/DarkBlueRadioButton"
+            android:layout_marginLeft="50dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/trabalho" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edtReferencia"
+        style="@style/TextoPadrao"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="@string/referencia"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btnSalvar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:backgroundTint="@color/azulBase"
+        android:gravity="center"
+        android:outlineAmbientShadowColor="@color/black"
+        android:text="@string/salvar"
+        android:textColor="@color/azulContraste"
+        android:textSize="@dimen/smallTxt"
+        android:textStyle="bold"
+        android:letterSpacing="0"
+        app:layout_constraintBottom_toTopOf="@+id/myScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/myScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gdlHor">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/txtContatos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="24dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/begeclaro"
+                android:textSize="@dimen/mediumTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtPesquisar" />
+
+            <EditText
+                android:id="@+id/edtPesquisar"
+                style="@style/TextoPadrao"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:fontFamily="@font/lato"
+                android:hint="@string/pesquisar"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnPesquisar"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/azulBase"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/edtPesquisar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_action_name" />
+
+            <Button
+                android:id="@+id/btnExibir"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="260dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/azulBase"
+                android:outlineAmbientShadowColor="@color/black"
+                android:text="@string/exibir_todos_contatos"
+                android:textColor="@color/azulContraste"
+                android:textSize="@dimen/smallTxt"
+                android:letterSpacing="0"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/txtContatos"
+                app:layout_constraintStart_toStartOf="@+id/txtContatos"
+                app:layout_constraintTop_toBottomOf="@+id/txtContatos" />
+
+            <Button
+                android:id="@+id/btnLimpar"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="260dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/azulBase"
+                android:outlineAmbientShadowColor="@color/black"
+                android:letterSpacing="0"
+                android:text="@string/limpar_tela"
+                android:textColor="@color/azulContraste"
+                android:textSize="@dimen/smallTxt"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/txtContatos"
+                app:layout_constraintStart_toStartOf="@+id/txtContatos"
+                app:layout_constraintTop_toBottomOf="@+id/txtContatos" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlVer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

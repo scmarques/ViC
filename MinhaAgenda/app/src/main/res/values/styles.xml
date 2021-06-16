@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="FundoTela">
+        <item name="android:background">@drawable/fundoagenda</item>
+    </style>
+
+    <style name="TextoPadrao">
+        <item name="android:textSize">@dimen/mediumTxt</item>
+        <item name="android:textColor">@color/cinzaPadrao</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColorHint">@color/azulContrasteOp60</item>
+
+    </style>
+
+    <style name="DarkBlueRadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:buttonTint">@color/azulContrasteOp60</item>
+        <item name="android:textColor">@color/azulContraste</item>
+        <item name="android:textSize">@dimen/mediumTxt</item>
+    </style>
+
+</resources>
