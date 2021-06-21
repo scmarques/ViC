@@ -10,4 +10,5 @@
     <string name="exibir_todos_contatos">Exibir todos contatos</string>
     <string name="limpar_tela">Limpar tela</string>
     <string name="retornar_ao_menu">Retornar ao menu</string>
+    <string name="excluir">Excluir</string>
 </resources>

@@ -4,9 +4,12 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-open class Contato(open val nome : String, open var nomeOrdena : String, open val telefone : String) : Parcelable{
+open class Contato(open val nome : String, open var nomeOrdena : String, open val telefone : String,
+                   open val descricao : String, open val categoria: String) : Parcelable{
 
-    constructor(nome : String, telefone: String) : this (nome, nome, telefone) {
+    constructor(nome : String, telefone: String, descricao : String, categoria: String) :
+            this (nome, nome, telefone, descricao, categoria) {
+
         nomeOrdena = removeAcento(nome.uppercase())
     }
 

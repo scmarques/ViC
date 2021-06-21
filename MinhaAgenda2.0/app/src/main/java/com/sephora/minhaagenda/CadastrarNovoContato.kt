@@ -1,7 +1,6 @@
 package com.sephora.minhaagenda
 
 import android.content.Intent
-import kotlinx.android.synthetic.main.activity_main.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
@@ -11,7 +10,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import com.sephora.minhaagenda.classes.Contato
 import com.sephora.minhaagenda.classes.Pessoal
 import com.sephora.minhaagenda.classes.Trabalho
 
@@ -25,6 +23,7 @@ class CadastrarNovoContato : AppCompatActivity() {
     private lateinit var rdgTipo : RadioGroup
     private lateinit var rbPessoal : RadioButton
     private lateinit var rbTrabalho : RadioButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +43,7 @@ class CadastrarNovoContato : AppCompatActivity() {
         rbTrabalho = findViewById(R.id.rbTrabalho)
         rbPessoal = findViewById(R.id.rbPessoal)
 
-
+        edtNome.requestFocus()
         btnSalvar.setOnClickListener{
 
             val nome = edtNome?.text.toString()
@@ -67,6 +66,7 @@ class CadastrarNovoContato : AppCompatActivity() {
                         novoP.ordenaContato()
                         intent.putExtra(CONTATO, novoP)
                         startActivity(intent)
+                        finishAfterTransition()
                     }
 
                     (rbTrabalho.id)->{
@@ -74,6 +74,7 @@ class CadastrarNovoContato : AppCompatActivity() {
                         novoT.ordenaContato()
                         intent.putExtra(CONTATO, novoT)
                         startActivity(intent)
+                        finishAfterTransition()
 
                     }
                 }
@@ -109,16 +110,11 @@ class CadastrarNovoContato : AppCompatActivity() {
         }
     }
 
-    fun limparErro (){
-        edtTelefone.setError(null)
-        edtNome.setError(null)
-        edtRef.setError(null)
-    }
 
     fun onReturnClick(view: View){
-
         val intent = Intent (this, MainActivity::class.java)
         startActivity(intent)
+        finishAfterTransition()
     }
 
     companion object{

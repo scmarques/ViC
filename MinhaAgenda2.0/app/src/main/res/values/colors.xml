@@ -17,6 +17,7 @@
     <color name="cinzaClaro">#A0A7CC</color>
     <color name="cinzaEscuro">#232323</color>
     <color name="fundoBege">#f1eee9</color>
+    <color name="begeCaixaTexto">#FAF6F1</color>
 
 
 </resources>

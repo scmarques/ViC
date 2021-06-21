@@ -34,11 +34,22 @@
             android:id="@+id/imgTitleInferior"
             android:layout_width="60dp"
             android:layout_height="4dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gdlHor"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="@+id/imgContato"
+            app:layout_constraintTop_toBottomOf="@+id/imgContato"
             app:srcCompat="@drawable/title_inferior" />
+
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="355dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imgContato"
+            app:layout_constraintTop_toBottomOf="@+id/imgContato" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlVer"
@@ -59,50 +70,60 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="110dp" />
+            app:layout_constraintGuide_begin="143dp" />
 
-        <ScrollView
-            android:id="@+id/myScrollView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/gdlScroll">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="416dp"
+            android:layout_height="551dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gdlScroll">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcContact"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/mediumTxt"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text=" \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" />
 
-                        <TextView
-                            android:id="@+id/txtContatos"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:textSize="@dimen/mediumTxt"
-                            app:layout_constraintBottom_toTopOf="@+id/btnReturn"
-                            app:layout_constraintStart_toStartOf="parent"
-                            tools:text=" \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" />
 
-                        <Button
-                            android:id="@+id/btnReturn"
-                            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="50dp"
-                            android:layout_marginBottom="50dp"
-                            android:letterSpacing="0"
-                            android:onClick="onReturnClick"
-                            android:text="Retornar ao menu"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/smallTxt"
-                            app:icon="@drawable/ic_baseline_arrow_back_ios_24"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="25dp"
+            android:backgroundTint="@color/begeclaro"
+            android:contentDescription="Início"
+            android:onClick="onAddClick"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add" />
 
-        </ScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginBottom="25dp"
+            android:backgroundTint="@color/begeclaro"
+            android:contentDescription="Início"
+            android:onClick="onReturnClick"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

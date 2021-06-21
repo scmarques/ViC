@@ -15,6 +15,7 @@
         android:layout_marginStart="24dp"
         android:background="@color/begeclaro"
         android:letterSpacing="0"
+        android:onClick="onAddClickMain"
         android:text="Cadastrar novo contato"
         android:textAllCaps="false"
         android:textColor="@color/azulContraste"
@@ -25,6 +26,7 @@
 
     <Button
         android:id="@+id/btnExibir"
+        android:onClick="OnShowClick"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
@@ -40,6 +42,7 @@
 
     <Button
         android:id="@+id/btnPesquisar"
+        android:onClick="OnSearchClick"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,6 +58,7 @@
 
     <ImageView
         android:id="@+id/imgAdd"
+        android:onClick="onAddClickMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -65,6 +69,7 @@
 
     <ImageView
         android:id="@+id/imgExibe"
+        android:onClick="OnShowClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -75,6 +80,7 @@
 
     <ImageView
         android:id="@+id/imgPesquisa"
+        android:onClick="OnSearchClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -84,13 +90,15 @@
 
     <EditText
         android:id="@+id/edtPesquisar"
+        android:onClick="OnSearchClick"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:textAlignment="gravity"
         android:inputType="textPersonName"
         android:hint="Pesquisar por nome:"
+        android:focusableInTouchMode="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imgPesquisa" />
 

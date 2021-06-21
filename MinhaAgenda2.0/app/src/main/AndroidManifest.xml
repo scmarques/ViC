@@ -17,7 +17,8 @@
         <activity android:name=".ExibirContatos" />
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

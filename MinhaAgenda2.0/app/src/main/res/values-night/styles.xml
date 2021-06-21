@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="FundoTela">
-        <item name="android:background">@drawable/fundo_dark</item>
-    </style>
 
     <style name="TextoPadrao">
         <item name="android:textSize">@dimen/mediumTxt</item>
