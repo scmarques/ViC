@@ -8,10 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sephora.minhaagenda.classes.Contato
 
-
 class ContatosAdapter (private  val dataSet : MutableList<Contato>, private val listener : OnItemClickListener) :
     RecyclerView.Adapter<ContatosAdapter.ContatosViewHolder>(){
-
 
     inner class ContatosViewHolder(view : View) : RecyclerView.ViewHolder(view),  View.OnClickListener{
         val name = view.findViewById<TextView>(R.id.itemName)
