@@ -50,13 +50,6 @@ class ContatosAdapter (private  val dataSet : MutableList<Contato>, private val 
 
     }
 
-
     override fun getItemCount(): Int = dataSet.size
 
-
-    fun changeData (list : MutableList<Contato>) {
-        dataSet.clear()
-        dataSet.addAll(list)
-        notifyDataSetChanged()
-    }
 }
