@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaAgenda"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".Pesquisar"></activity>
         <activity android:name=".CadastrarNovoContato" />
         <activity android:name=".ExibirContatos" />
         <activity
