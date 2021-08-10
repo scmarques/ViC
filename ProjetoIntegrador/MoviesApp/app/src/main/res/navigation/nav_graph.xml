@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/collectionFragment">
+
+    <fragment
+        android:id="@+id/popularMoviesFragment"
+        android:name="com.sephora.moviesapp.presentation.fragments.PopularMoviesFragment">
+        <action
+            android:id="@+id/action_popularMoviesFragment_to_collectionFragment"
+            app:destination="@id/collectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.sephora.moviesapp.presentation.fragments.MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <argument
+            android:name="local"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectionFragment"
+        android:name="com.sephora.moviesapp.presentation.fragments.CollectionFragment"
+        tools:layout="@layout/fragment_collection_fragments">
+        <action
+            android:id="@+id/action_collectionFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_collectionFragment_to_systemFailedFragment"
+            app:destination="@id/systemFailedFragment" />
+        <action
+            android:id="@+id/action_collectionFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteMoviesFragment"
+        android:name="com.sephora.moviesapp.presentation.fragments.FavoriteMoviesFragment"
+        android:label="fragment_favorite_movies"
+        tools:layout="@layout/fragment_favorite_movies" >
+        <action
+            android:id="@+id/action_favoriteMoviesFragment_to_systemFailedFragment"
+            app:destination="@id/systemFailedFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/systemFailedFragment"
+        android:name="com.sephora.moviesapp.presentation.fragments.SystemFailedDialog"
+        android:label="SystemFailedFragment" />
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.sephora.moviesapp.presentation.fragments.SearchResultFragment"
+        tools:layout="@layout/fragment_search_result" >
+        <action
+            android:id="@+id/action_searchResultFragment_to_systemFailedFragment"
+            app:destination="@id/systemFailedFragment" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_movieDetailFragment2"
+            app:destination="@id/movieDetailFragment" />
+        <argument
+            android:name="local"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_collectionFragment"
+            app:destination="@id/collectionFragment" />
+        <argument
+            android:name="query"
+            app:argType="string" />
+    </fragment>
+</navigation>

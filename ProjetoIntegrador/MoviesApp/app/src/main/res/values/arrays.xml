@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="autosize_text_sizes">
+        <item>@dimen/medium_sp</item>
+        <item>@dimen/large_sp</item>
+    </array>
+</resources>
