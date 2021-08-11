@@ -37,12 +37,13 @@
 
         <ImageButton
             android:id="@+id/btnFavorite"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
             android:background="@color/white"
             android:contentDescription="@string/favorite"
-            android:scaleType="centerInside"
             android:src="@drawable/ic_baseline_favorite_border_24"
+            app:layout_constraintBottom_toBottomOf="@+id/txtMovieTitle"
             app:layout_constraintEnd_toEndOf="@id/gdlDetailsVert_End"
             app:layout_constraintTop_toTopOf="@+id/txtMovieTitle" />
 
@@ -51,14 +52,15 @@
             style="@style/DetailedMovieTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxHeight="70dp"
+            android:maxWidth="300dp"
             android:layout_marginTop="48dp"
             android:textAlignment="viewStart"
             app:autoSizePresetSizes="@array/autosize_text_sizes"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="@+id/txtMovieYear"
             app:layout_constraintTop_toBottomOf="@+id/imgDetailBanner"
-            app:layout_constraintWidth_max="330dp"
-            tools:text="Ford vs Ferrari" />
+            app:layout_constraintWidth_max="330dp" />
 
         <TextView
             android:id="@+id/txtMovieYear"
