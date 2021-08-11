@@ -23,7 +23,9 @@ class LocalRepositoryImp
                     private val tmdbService: TmdbService
 ) {
 
-    fun selectAllFavorite(): Flowable<PagingData<DetailedMovieEntity>> {
+    val mapper = MoviesMapper(moviesDao)
+
+    fun selectAllFavorite(genreId : String?): Flowable<PagingData<DetailedMovieEntity>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
@@ -31,7 +33,7 @@ class LocalRepositoryImp
                 maxSize = 10,
                 prefetchDistance = 3,
                 initialLoadSize = 10),
-            pagingSourceFactory = { moviesDao.selectAllFavorites() }
+            pagingSourceFactory = { moviesDao.selectAllFavorites(genreId) }
         ).flowable
     }
 
@@ -71,10 +73,6 @@ class LocalRepositoryImp
         return moviesDao.getGenreList()
     }
 
-    fun insertGenreList(genreListEntity: List<GenreListEntity.GenreEntity>) {
-        moviesDao.insertGenreList(genreListEntity)
-    }
-
     fun getCastList(movieId: Int) : List<MovieCreditsEntity.CastEntity>{
         return moviesDao.getCastList(movieId)
     }
@@ -82,7 +80,9 @@ class LocalRepositoryImp
     fun insertCastList(castEntity: List<MovieCreditsEntity.CastEntity>) {
         moviesDao.insertCastList(castEntity)
     }
-
+    fun insertGenreList(genreListEntity: List<GenreListEntity.GenreEntity>) {
+        moviesDao.insertGenreList(genreListEntity)
+    }
 
     fun changeFavoriteStatus(movieId : Int, isFavorite : Boolean) {
         when (isFavorite) {
@@ -97,6 +97,19 @@ class LocalRepositoryImp
         }
     }
 
+    fun treatGenreEntity () {
+
+        val compositeDisposable = CompositeDisposable()
+        compositeDisposable.addAll(
+            tmdbService.getGenresList()
+                .subscribeOn(Schedulers.io())
+                .map { mapper.transformGenreList(it) }
+                .map { moviesDao.insertGenreList(it) }
+                .doOnError { throw Exception() }
+                .subscribe()
+        )
+    }
+
     fun treatEntity (movieId : Int){
 
         val compositeDisposable = CompositeDisposable()
@@ -107,6 +120,7 @@ class LocalRepositoryImp
                 .map { mapper.transformDetailed(it) }
                 .map {mapper.transformFavoriteStatus(it, 1)}
                 .map { moviesDao.insertFavorite(it) }
+                .doOnError { throw Exception() }
                 .subscribe()
         )
 
@@ -115,6 +129,7 @@ class LocalRepositoryImp
                 .subscribeOn(Schedulers.io())
                 .map { mapper.transformCast(movieId, it) }
                 .map { moviesDao.insertCastList(it.cast) }
+                .doOnError { throw Exception() }
                 .subscribe()
         )
 
@@ -123,6 +138,7 @@ class LocalRepositoryImp
                 .subscribeOn(Schedulers.io())
                 .map { mapper.transformParentalGuidance(movieId, it) }
                 .map { moviesDao.insertParentalGuidance(it) }
+                .doOnError { throw Exception() }
                 .subscribe()
         )
     }

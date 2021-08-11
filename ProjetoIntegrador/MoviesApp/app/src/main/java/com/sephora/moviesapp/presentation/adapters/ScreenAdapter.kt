@@ -8,7 +8,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.sephora.moviesapp.presentation.fragments.FavoriteMoviesFragment
 import com.sephora.moviesapp.presentation.fragments.PopularMoviesFragment
 
-@ExperimentalPagingApi
 class ScreenAdapter(fragmentManager : FragmentManager, lifecycle : Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 

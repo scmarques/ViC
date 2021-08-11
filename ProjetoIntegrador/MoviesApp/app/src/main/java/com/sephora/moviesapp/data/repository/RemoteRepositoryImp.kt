@@ -1,6 +1,5 @@
 package com.sephora.moviesapp.data.repository
 
-
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -12,61 +11,69 @@ import io.reactivex.Flowable
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
 class RemoteRepositoryImp @Inject constructor(
     private val tmdbService: TmdbService,
-    private val moviesDao: MoviesDao,
-    ) {
+    private val moviesDao: MoviesDao
+) {
 
-    fun fetchAllMoviesResponse(with_genres : String) : Flowable<PagingData<DetailedMovieEntity>> {
+    private val mapper = MoviesMapper(moviesDao)
+
+    fun fetchAllMoviesResponse(with_genres: String): Flowable<PagingData<DetailedMovieEntity>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
                 enablePlaceholders = false,
-                maxSize = 30,
-                initialLoadSize = 1
+                maxSize = 10,
+                initialLoadSize = 15
             ),
-            pagingSourceFactory = { MoviesPagingSource(tmdbService,
-                moviesDao = moviesDao,
-                with_genres = with_genres) }
+            pagingSourceFactory = {
+                MoviesPagingSource(
+                    tmdbService,
+                    moviesDao = moviesDao,
+                    with_genres = with_genres
+                )
+            }
         ).flowable
 
     }
 
-    fun fetchSearchByQuery(query : String) : Flowable<PagingData<DetailedMovieEntity>> {
+    fun fetchSearchByQuery(query: String): Flowable<PagingData<DetailedMovieEntity>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
                 enablePlaceholders = false,
-                maxSize = 30,
-                initialLoadSize = 40
+                maxSize = 10,
+                initialLoadSize = 15
             ),
             pagingSourceFactory = { MoviesFromSearchPagingSource(tmdbService, moviesDao, query) }
         ).flowable
 
     }
 
-/*
-    fun fetchSearchByQuery(query : String) : LiveData<AllMoviesResponse>{
-        return tmdbService.searchMovieByQuery(query = query).toLiveData()
-    }
-*/
-    fun fetchGenresListResponse(): Flowable<GenreResponse> {
+    fun fetchGenresListResponse(): Flowable<List<GenreListEntity.GenreEntity>> {
         return tmdbService.getGenresList()
+            .map { mapper.transformGenreList(it) }
+
     }
 
-    fun fetchParentalsGuidanceResponse(id: Int): Flowable<ReleaseDatesResponse> {
+    fun fetchParentalsGuidanceResponse(id: Int): Flowable<ParentalGuidanceEntity> {
         return tmdbService.getReleaseDateResponse(movie_id = id)
+            .map { mapper.transformParentalGuidance(id, it) }
+
     }
 
-    fun fetchDetailedMovieResponse(id: Int): Flowable<DetailedMovieModel> {
+    fun fetchDetailedMovieResponse(id: Int): Flowable<DetailedMovieEntity> {
         return tmdbService.getDetailedMovie(movie_id = id)
+            .map { mapper.transformDetailed(it) }
 
     }
 
-    fun fetchMovieCreditsResponse(id: Int): Flowable<MovieCreditsResponse> {
+    fun fetchMovieCreditsResponse(id: Int): Flowable<MovieCreditsEntity> {
         return tmdbService.getMovieCredits(movie_id = id)
-    }
+            .map { mapper.transformCast(id, it) }
+
 
     }
+
+}

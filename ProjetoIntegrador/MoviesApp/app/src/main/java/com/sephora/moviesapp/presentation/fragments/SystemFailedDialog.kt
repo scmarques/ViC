@@ -21,29 +21,31 @@ class SystemFailedDialog : BottomSheetDialogFragment() {
     private lateinit var binding : DialogSystemFailedBinding
     override fun onResume() {
         super.onResume()
+
         (activity as AppCompatActivity).supportActionBar?.hide()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding = DialogSystemFailedBinding.bind(view)
+
         binding.apply {
             btnTryAgain.setOnClickListener {
                 requireActivity().onBackPressed()
             }
             btnClose.setOnClickListener{
                 requireActivity().onBackPressed()
-
             }
         }
-
     }
 
     override fun onStop() {
         super.onStop()
+
         (activity as AppCompatActivity).supportActionBar?.show()
+
     }
-
-
 }

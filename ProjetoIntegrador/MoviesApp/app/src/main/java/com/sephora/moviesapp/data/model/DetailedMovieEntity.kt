@@ -20,7 +20,7 @@ data class MoviesList ( val page : Int,
 )
 
 class DetailedMovieEntity(
-    var isFavorite: Int?,
+    var isFavorite: Int,
     val posterPath: Image?,
     val title: String,
     val runtime: String?,
@@ -29,5 +29,6 @@ class DetailedMovieEntity(
     val movieOverview: String?,
     @PrimaryKey(autoGenerate = false) val movieId: Int,
     val backdropPath: Image?,
-    val releaseYear: String?
+    val releaseYear: String?,
+    val allGenres : String = ""
 )

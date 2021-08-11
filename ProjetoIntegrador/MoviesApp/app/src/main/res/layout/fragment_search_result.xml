@@ -10,54 +10,57 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutNotFound"
         android:layout_width="match_parent"
-        android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layoutMovieFound"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="invisible">
-
-        <ImageView
-            android:id="@+id/imgTabSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tab_item_selector" />
-
-        <TextView
-            android:id="@+id/txtSearchModeTitle"
-            style="@style/StandardTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/search_mode_title" />
-
-        <Button
-            android:id="@+id/btnHome"
-            style="@style/GreenTextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/back_to_start"
-            android:textSize="18sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBtnGenre"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutMovieFound"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal"
-            tools:listitem="@layout/model_genre_filled" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="32dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvItemModel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:listitem="@layout/model_movie_item" />
+            <ImageView
+                android:id="@+id/imgTabSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/tab_item_selector" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:id="@+id/txtSearchModeTitle"
+                style="@style/StandardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/search_mode_title" />
+
+            <Button
+                android:id="@+id/btnHome"
+                style="@style/GreenTextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/back_to_start"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBtnGenre"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                tools:listitem="@layout/model_genre_filled" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvItemModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:listitem="@layout/model_movie_item" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
             android:id="@+id/txtNotFound"
@@ -66,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:text="@string/not_found"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/txtNotFoundMsg"
             app:layout_constraintStart_toStartOf="@+id/txtNotFoundMsg"
             app:layout_constraintTop_toBottomOf="@+id/imgNotFound" />
@@ -75,6 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/not_found"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/gldSearHor"
             app:layout_constraintEnd_toEndOf="@+id/txtNotFound"
             app:layout_constraintStart_toStartOf="@+id/txtNotFound"
@@ -83,12 +88,14 @@
         <TextView
             android:id="@+id/txtNotFoundMsg"
             style="@style/SmallStandardText"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="64dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:text="@string/not_found_msg"
+            android:textAlignment="center"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtNotFound" />
@@ -106,7 +113,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

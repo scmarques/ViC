@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="GreenTextButton">
+    <style name="GreenTextButton" parent ="@style/Widget.MaterialComponents.Button.TextButton">
         <item name="android:lineHeight">40dp</item>
         <item name="android:textColor">@color/primary_green</item>
         <item name="android:textFontWeight">700</item>
@@ -170,6 +170,15 @@
         <item name="android:textSize">@dimen/small_sp</item>
         <item name="android:height">36sp</item>
     </style>
+
+    <style name="ChipFilledButtonStyle">
+            <item name="android:fontFamily">@font/lato</item>
+            <item name="android:textSize">@dimen/small_sp</item>
+            <item name="android:height">36sp</item>
+            <item name="android:textColor">@color/btg_chip_text_color_list</item>
+        </style>
+
+
 
 
 </resources>

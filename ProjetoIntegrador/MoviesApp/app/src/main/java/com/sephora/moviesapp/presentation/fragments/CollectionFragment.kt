@@ -1,42 +1,41 @@
 package com.sephora.moviesapp.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
+import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.doOnLayout
-import androidx.core.view.isVisible
+import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import androidx.paging.ExperimentalPagingApi
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.sephora.moviesapp.R
 import com.sephora.moviesapp.databinding.FragmentCollectionFragmentsBinding
 import com.sephora.moviesapp.presentation.adapters.ScreenAdapter
-import com.sephora.moviesapp.presentation.viewmodels.SharedScreenViewModel
-import com.sephora.moviesapp.utils.Functions
+import com.sephora.moviesapp.presentation.viewmodels.CollectionFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-@ExperimentalPagingApi
+@AndroidEntryPoint
 class CollectionFragment : Fragment(R.layout.fragment_collection_fragments){
 
+    private val viewModel by viewModels<CollectionFragmentViewModel>()
     private lateinit var binding: FragmentCollectionFragmentsBinding
+    private lateinit var tablayout : TabLayout
+    private lateinit var viewpager : ViewPager2
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentCollectionFragmentsBinding.bind(view)
-
-        val viewpager = binding.fragViewPager
+        viewpager = binding.fragViewPager
         viewpager.adapter = ScreenAdapter(childFragmentManager, lifecycle)
-        val tablayout = binding.mainTablayout
+        tablayout = binding.mainTablayout
         viewpager.isUserInputEnabled = false
-
-        if(!checkNetWorkStatus()){
-            tablayout.setScrollPosition(1, 0f, true)
-            viewpager.currentItem = 1
-        }
 
         TabLayoutMediator(tablayout, viewpager) { tab, position ->
             when (position) {
@@ -49,21 +48,28 @@ class CollectionFragment : Fragment(R.layout.fragment_collection_fragments){
             }
         }.attach()
 
-      //  ((tablayout.getTabAt(2)?.view))?.isVisible = false
-
+        if (!viewModel.checkNetWorkStatus(requireContext())) {
+            val action =
+                CollectionFragmentDirections.actionCollectionFragmentToSystemFailedFragment()
+            findNavController().safeNavigate(action)
+        }
+        setupErrorObserver()
         setHasOptionsMenu(true)
     }
 
+    fun setupErrorObserver(){
+        viewModel.checkNetWorkStatus(requireContext())
+        viewModel.errorFound.observe(
+            viewLifecycleOwner, {
+                if (it) {
+                    tablayout.setScrollPosition(1, 0f, true)
+                    viewpager.currentItem = 1
+                }
+            })
+    }
 
-
-    fun checkNetWorkStatus() : Boolean {
-        val status = Functions()
-        if(!status.checkNetworkStatus(requireContext())){
-            //val action = CollectionFragmentDirections.actionCollectionFragmentToSystemFailedFragment()
-            //findNavController().navigate(action)
-            return false
-        }
-        return true
+    fun NavController.safeNavigate(direction: NavDirections) {
+        currentDestination?.getAction(direction.actionId)?.run { navigate(direction) }
     }
 
 }

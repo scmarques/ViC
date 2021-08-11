@@ -1,23 +1,26 @@
 package com.sephora.moviesapp.data.model
 
+import android.util.Log
 import com.sephora.moviesapp.data.database.MoviesDao
 import javax.inject.Inject
 
 class MoviesMapper @Inject constructor (private val moviesDao: MoviesDao) {
 
+
     fun transformDetailed(
         detailedMovieModel: DetailedMovieModel): DetailedMovieEntity {
         return DetailedMovieEntity(
-            isFavorite = checkInDatabase(movieId = detailedMovieModel.movieId),
+            isFavorite = checkInDatabase(moviesDao, detailedMovieModel.movieId),
             posterPath = detailedMovieModel.posterPath?.let{ path -> Image(path) },
             title = detailedMovieModel.title,
-            runtime = detailedMovieModel.runtimeMask(),
+            runtime = detailedMovieModel.runtimeMask(detailedMovieModel.runtime),
             genreResults = detailedMovieModel.genreResults,
-            voteAverage = detailedMovieModel.getVoteAverageString(),
+            voteAverage = detailedMovieModel.getVoteAverageString(detailedMovieModel.voteAverage),
             movieOverview = detailedMovieModel.movieOverview,
             movieId = detailedMovieModel.movieId,
             backdropPath = detailedMovieModel.backdropPath?.let{ path -> Image(path)},
-            releaseYear = detailedMovieModel.getReleaseYear()
+            releaseYear = detailedMovieModel.getReleaseYear(detailedMovieModel.releaseDate),
+            allGenres = ""
         )
     }
 
@@ -34,17 +37,18 @@ class MoviesMapper @Inject constructor (private val moviesDao: MoviesDao) {
             movieOverview = detailedMovieEntity.movieOverview,
             movieId = detailedMovieEntity.movieId,
             backdropPath = detailedMovieEntity.backdropPath,
-            releaseYear = detailedMovieEntity.releaseYear
+            releaseYear = detailedMovieEntity.releaseYear,
+            allGenres = ""
         )
     }
 
-    fun transformParentalGuidance(movieId: Int, realaseDatesResponse: ReleaseDatesResponse,
+    fun transformParentalGuidance(movieId: Int, releaseDatesResponse: ReleaseDatesResponse,
     ): ParentalGuidanceEntity {
 
         return ParentalGuidanceEntity(
            id = 0,
            movieId = movieId,
-           parentalGuidance = realaseDatesResponse.toString()
+           parentalGuidance = releaseDatesResponse.toString()
         )
     }
 
@@ -69,66 +73,30 @@ class MoviesMapper @Inject constructor (private val moviesDao: MoviesDao) {
     }
 
     fun transformGenreList(genreResponse: GenreResponse
-    ): GenreListEntity {
+    ): List<GenreListEntity.GenreEntity> {
 
         return with(genreResponse) {
 
-            GenreListEntity(
-                genreResults.map {
+          genreResponse.genreResults.map {
                     GenreListEntity.GenreEntity(
-                        id = 0,
                         genreName = it.name,
                         genreId = it.genreId
                     )
-                })
+                }
         }
     }
 
+    fun transformGenreModel(genre: GenreListEntity.GenreEntity
+    ) : GenreModel {
 
-   /* fun transform(response: AllMoviesResponse): AllMoviesResponse {
-        return with(response) {
+        return with(genre) {
 
-            AllMoviesResponse(
-                pages = pages,
-                page = page,
-                movies = movies.map {
-                    MovieModel(
-                        isFavorite = checkInDatabase(it.movieId),
-                        title = it.title,
-                        posterPath = it.posterPath,
-                        voteAverage = it.voteAverage,
-                        movieId = it.movieId,
-                        genreId = it.genreId,
-                        // it.posterPath?.let { path -> Image(path) },
-
-                    )
-                }
-            )
-
+               GenreModel(
+                    name = genreName ,
+                    genreId = genreId
+                )
+            }
         }
-    }
-*/
-/*
-     fun transform(response: AllMoviesResponse): AllMoviesList {
-        return with(response) {
-
-            AllMoviesList(
-                total = total,
-                page = page,
-                moviesList = movies.map{
-                    AllMoviesList.Movie(
-                        isFavorite = checkInDatabase(it.movieId),
-                        title = it.title,
-                        posterPath = it.posterPath?.let { path -> Image(path) },
-                        voteAverage = it.getVoteAverageString(),
-                        movieId = it.movieId,
-                        genreId = it.genreId
-                    )
-                }
-            )
-
-        }
-    }*/
 
     fun transformIntoBasic(allMoviesResponse: AllMoviesResponse): MoviesList {
 
@@ -138,31 +106,37 @@ class MoviesMapper @Inject constructor (private val moviesDao: MoviesDao) {
                 pages = this.total,
                 movies.map {
                 DetailedMovieEntity(
-                    isFavorite = checkInDatabase(it.movieId),
+                    isFavorite = checkInDatabase(moviesDao, it.movieId),
                     posterPath = it.posterPath?.let { path -> Image(path) },
                     title = it.title,
                     runtime = "",
                     genreResults = null,
-                    voteAverage = it.getVoteAverageString(),
+                    voteAverage = it.getVoteAverageString(it.voteAverage),
                     movieOverview = null,
                     movieId = it.movieId,
                     backdropPath = null,
-                    releaseYear = null
+                    releaseYear = null,
+                    allGenres = makeGenreString(it.genreId)
                 )
             })
         }
-
-
     }
 
-
-    fun checkInDatabase(movieId: Int): Int {
+    fun checkInDatabase(moviesDao: MoviesDao, movieId: Int): Int {
         var isFavorite = false
-
         moviesDao.isFavorite(movieId)
                .map {
                    isFavorite = true
                }
         return if (isFavorite) 1 else 0
     }
+
+    fun makeGenreString(genreResult : List<Int>) : String {
+        var genres = ""
+            for (i in genreResult) {
+                genres += "${i}, "
+            }
+        return genres
+    }
+
 }

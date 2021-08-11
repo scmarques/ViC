@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/drawable/btg_chip_state_list.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/drawable/btg_chip_text_color.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/activity_movie_detail.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/dialog_movie_not_found.xml" value="0.1814814814814815" />
@@ -11,13 +15,16 @@
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_collection_fragments.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_favorite_movies.xml" value="0.11481481481481481" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_local_movie_detail.xml" value="0.1" />
-        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_movie_detail.xml" value="0.12" />
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_movie_detail.xml" value="0.2660287081339713" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_movie_loading.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_popular_movies.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_search_result.xml" value="0.14" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/fragment_system_failed.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_genre_border.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_genre_filled.xml" value="0.1" />
-        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_movie_item.xml" value="0.5764705882352941" />
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_movie_item.xml" value="0.27761194029850744" />
+        <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_single_genre_filled.xml" value="0.1" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/fragment_movie_detail.xml" value="0.25" />
       </map>
     </option>
   </component>

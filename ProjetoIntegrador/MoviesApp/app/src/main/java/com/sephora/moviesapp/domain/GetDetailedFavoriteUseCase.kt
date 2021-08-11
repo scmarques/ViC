@@ -1,4 +1,4 @@
-package com.sephora.moviesapp.domain.usecases
+package com.sephora.moviesapp.domain
 
 import com.sephora.moviesapp.data.repository.LocalRepositoryImp
 

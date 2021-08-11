@@ -22,14 +22,27 @@
             app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Card.Media" />
 
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="65dp"
+            android:foregroundGravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imgDetailBanner"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgDetailBanner"
+            app:layout_constraintVertical_bias="0.15" />
+
         <ImageButton
             android:id="@+id/btnFavorite"
-            android:layout_width="32dp"
-            android:layout_height="28dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@color/white"
             android:contentDescription="@string/favorite"
+            android:scaleType="centerInside"
             android:src="@drawable/ic_baseline_favorite_border_24"
-            app:layout_constraintBottom_toBottomOf="@+id/txtMovieTitle"
             app:layout_constraintEnd_toEndOf="@id/gdlDetailsVert_End"
             app:layout_constraintTop_toTopOf="@+id/txtMovieTitle" />
 
@@ -83,9 +96,8 @@
             android:layout_width="376dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/txtOverviewTitle"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtOverviewTitle" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -114,10 +126,11 @@
             android:id="@+id/btnReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="48dp"
             android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/return_home"
+            android:minHeight="48dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -162,7 +175,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="20dp"
-            android:contentDescription="@string/movie_rate"
+            android:contentDescription="@string/users_rating"
             android:src="@drawable/ic_baseline_star_rate_24"
             app:layout_constraintBottom_toBottomOf="@+id/txtUsersRating"
             app:layout_constraintEnd_toStartOf="@+id/txtUsersRating"

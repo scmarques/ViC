@@ -17,7 +17,7 @@ class MovieModel(
     @SerializedName ("genre_ids") val genreId : List<Int>
 ) {
 
-    fun getVoteAverageString(): String {
+    fun getVoteAverageString(voteAverage : Double): String {
         val votePercent = voteAverage * 10
         return "%.0f".format(votePercent) + "%"
     }

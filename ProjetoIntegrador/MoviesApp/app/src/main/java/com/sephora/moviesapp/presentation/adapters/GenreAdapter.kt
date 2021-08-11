@@ -4,12 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.sephora.moviesapp.R
 import com.sephora.moviesapp.data.model.GenreListEntity
 import com.sephora.moviesapp.databinding.ModelGenreFilledBinding
 
 class GenreAdapter(
     var dataset: MutableList<GenreListEntity.GenreEntity>,
-    private val onGenreClick: (genre: GenreListEntity.GenreEntity?) -> Unit
+    private val onGenreClick: (genreId: Int) -> Unit
 ) :
     RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
 
@@ -31,20 +33,29 @@ class GenreAdapter(
 
         fun bind(genre: GenreListEntity.GenreEntity) {
             binding.apply {
-                chBtnGenreFilled.text = genre.genreName
-                chBtnGenreFilled.setOnClickListener() {
-                  //  previousGenreId = dataset[layoutPosition].genreId
-                    if(chBtnGenreFilled.isChecked){onGenreClick.invoke(dataset[layoutPosition])}
-                        else {onGenreClick.invoke(null)}
+                for (genre in dataset) {
+                    val chip = Chip(itemView.context)
+                    addChip(chip, genre)
+                    chipGroup.addView(chip, chipGroup.childCount - 1)
+                    loading.visibility = View.GONE
+                }
+
+                chipGroup.setOnCheckedChangeListener { chipGroup, _ ->
+                    onGenreClick.invoke(chipGroup.checkedChipId)
                 }
             }
         }
+
     }
+
     override fun getItemCount(): Int = dataset.size
 
-    fun onClick(v: View?) {}
-
-    companion object{
-        var previousGenreId: Int = -1
+    fun addChip(chip: Chip, genre: GenreListEntity.GenreEntity){
+        chip.text = genre.genreName
+        chip.id = genre.genreId
+        chip.isCheckable = true
+        chip.isCheckedIconVisible = false
+        chip.setTextAppearanceResource(R.style.ChipFilledButtonStyle)
+        chip.setChipBackgroundColorResource (R.color.btg_chip_state_list)
     }
 }

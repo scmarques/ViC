@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -9,29 +8,26 @@
       android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="21dp"
+        android:layout_marginHorizontal="@dimen/small_dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:height="36sp"
+        android:fontFamily="@font/lato"
+        android:textSize="@dimen/small_sp"
+        app:chipSpacing="20dp"
         app:singleSelection="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chBtnGenreFilled"
-        style="@style/Widget.MaterialComponents.Chip.Choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/small_dp"
-        android:layout_marginEnd="32dp"
-        android:height="36sp"
-        android:fontFamily="@font/lato"
-        android:textColor="@drawable/btg_chip_text_color"
-        android:textSize="@dimen/small_sp"
-        android:checkable="true"
-        app:chipBackgroundColor="@drawable/btg_chip_state_list"
-        tools:text=" Drama" />
-
-
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:foregroundGravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </com.google.android.material.chip.ChipGroup>
 

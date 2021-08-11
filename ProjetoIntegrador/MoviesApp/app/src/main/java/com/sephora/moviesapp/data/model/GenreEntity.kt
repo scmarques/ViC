@@ -11,9 +11,8 @@ class GenreListEntity(
     @Parcelize
     @Entity(tableName = "genre_entity")
     class GenreEntity (
-        @PrimaryKey(autoGenerate = true) val id: Int,
         val genreName : String,
-        val genreId : Int,
+        @PrimaryKey(autoGenerate = false) val genreId : Int,
     ) : Parcelable
 }
 

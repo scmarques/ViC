@@ -10,8 +10,8 @@ interface MoviesDao {
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         fun insertFavorite(movie : DetailedMovieEntity)
 
-        @Query("SELECT * FROM favorites ORDER BY title ASC")
-        fun selectAllFavorites(): PagingSource<Int, DetailedMovieEntity>
+        @Query("SELECT * FROM favorites WHERE genreResults LIKE '%' || :genreId || '%' ORDER BY title ASC")
+        fun selectAllFavorites(genreId : String?): PagingSource<Int, DetailedMovieEntity>
 
         @Query("SELECT * FROM favorites WHERE movieId = :movieId")
         fun isFavorite(movieId : Int) : List<DetailedMovieEntity>

@@ -20,7 +20,7 @@ class Converters {
 
     @TypeConverter
     fun jsonToList(value: String) = Gson().fromJson(value, Array<GenreModel>::class.java).toList()
-
+/*
     @TypeConverter
     fun listIntToJson(value: List<Int>?) = Gson().toJson(value)
 
@@ -39,5 +39,5 @@ class Converters {
 
     @TypeConverter
     fun jsonToGenreList(value: String) =
-        Gson().fromJson(value, Array<GenreListEntity.GenreEntity>::class.java).toList()
+        Gson().fromJson(value, Array<GenreListEntity.GenreEntity>::class.java).toList()*/
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618062415160",
+    "project_id": "moviesapp-c623d",
+    "storage_bucket": "moviesapp-c623d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618062415160:android:6d675b8be489d035b76dcd",
+        "android_client_info": {
+          "package_name": "com.sephora.moviesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618062415160-esfiassg86hu21cfg1fucpme4akhmnvr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAELaydObhWbMrXba0uG4O5xhJqe-k2kM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618062415160-esfiassg86hu21cfg1fucpme4akhmnvr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,70 +2,68 @@ package com.sephora.moviesapp.presentation.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.*
-import androidx.paging.filter
 import androidx.paging.rxjava2.cachedIn
-import com.sephora.moviesapp.data.model.*
+import com.sephora.moviesapp.data.model.GenreListEntity
 import com.sephora.moviesapp.data.repository.LocalRepositoryImp
 import com.sephora.moviesapp.data.repository.RemoteRepositoryImp
-import com.sephora.moviesapp.domain.DeleteFavoriteUseCase
-import com.sephora.moviesapp.domain.GetGenreListUseCase
-import com.sephora.moviesapp.domain.TreatEntityUseCase
+import com.sephora.moviesapp.domain.*
 import com.sephora.moviesapp.utils.Functions
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 @HiltViewModel
-class SearchResultsViewModel @Inject constructor(
+class CollectionFragmentViewModel@Inject constructor(
     private val repository: RemoteRepositoryImp,
-    private val localRepository: LocalRepositoryImp,
-) : ViewModel() {
+    private val localRepository: LocalRepositoryImp
+) : ViewModel(){
 
     private var _genresList = MutableLiveData<List<GenreListEntity.GenreEntity>>()
     val genreList: LiveData<List<GenreListEntity.GenreEntity>> = _genresList
-    private val getGenreListUseCase = GetGenreListUseCase(localRepository)
-    private val currentQuery = MutableLiveData(DEFAULT_QUERY)
-    private val deleteFavoriteUseCase = DeleteFavoriteUseCase(localRepository)
+    private val currentQuery = MutableLiveData(DEFAULT_GENRE)
+    private val compositeDisposable = CompositeDisposable()
+    private val fetchAllMoviesUseCase = FetchAllMoviesUseCase(repository)
     private val treatEntityUseCase = TreatEntityUseCase(localRepository)
-    private var _errorFound = MutableLiveData<Boolean>(false)
-    val errorFound: LiveData<Boolean> = _errorFound
-    private val currentGenre = MutableLiveData(DEFAULT_GENRE_MODEL)
+    private val getAllFavoritesUseCase = GetAllFavoriteMoviesUseCase(localRepository)
+    private val getGenreListUseCase = GetGenreListUseCase(localRepository)
+    private val deleteFavoriteUseCase = DeleteFavoriteUseCase(localRepository)
+    private val _errorFound = MutableLiveData(DEFAULT_ERROR_STATE)
+    val errorFound : LiveData<Boolean> = _errorFound
 
-
-    val foundMovies = currentQuery.switchMap { queryString ->
-        repository.fetchSearchByQuery(queryString)
-            .map { it -> it.filter { it.allGenres.contains(currentGenre.value.toString()) } }
+    val moviesList =  currentQuery.switchMap { queryString ->
+        fetchAllMoviesUseCase.execute(queryString)
             .doOnError { _errorFound.postValue(true) }
             .cachedIn(viewModelScope).toLiveData()
     }
 
-    val foundFavorite = currentQuery.switchMap { queryString ->
-        localRepository.searchInFavorites(queryString)
-            .map { it -> it.filter { it.allGenres.contains(currentGenre.value.toString()) } }
+    val allFavoriteMovies = currentQuery.switchMap { queryString ->
+        getAllFavoritesUseCase.execute(queryString)
             .doOnError { _errorFound.postValue(true) }
             .cachedIn(viewModelScope).toLiveData()
     }
 
-    fun filterByGenre(genreId: Int, query: CharSequence) {
-        if (genreId == -1) currentGenre.value = DEFAULT_GENRE_MODEL
-        else currentGenre.value = genreId.toString()
-        currentQuery.value = query.toString()
-    }
+    fun updateGenresList(isConnected: Boolean) {
+        if (isConnected) {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    localRepository.treatGenreEntity()
+                } catch (e: Exception) {
+                    _errorFound.postValue(true)
+                }
+            }
+        }
 
-    fun getGenresList() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = getGenreListUseCase.execute()
                 _genresList.postValue(response)
-                _errorFound.postValue(false)
             } catch (e: Exception) {
                 _errorFound.postValue(true)
             }
-
         }
     }
 
@@ -92,19 +90,55 @@ class SearchResultsViewModel @Inject constructor(
         }
     }
 
+    fun filterByGenre(query: CharSequence?) {
+        currentQuery.value = query.toString()
+    }
+
+    fun getAllFavorites(genreId: String) {
+        currentQuery.value = genreId
+    }
+
+    fun changeFavoriteStatus(movieId: Int) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                deleteFavoriteUseCase.execute(movieId)
+            } catch (e: Exception) {
+                _errorFound.postValue(true)
+            }
+        }
+    }
+
+    fun getGenreList() {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = getGenreListUseCase.execute()
+                _genresList.postValue(response)
+
+            } catch (e: Exception) {
+                _errorFound.postValue(true)
+            }
+        }
+    }
+
+    companion object {
+        const val DEFAULT_GENRE = ""
+        const val DEFAULT_ERROR_STATE = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.isDisposed
+    }
+
     fun checkNetWorkStatus(context: Context): Boolean {
         var isConnected = true
         val status = Functions()
         if (!status.checkNetworkStatus(context)) {
             isConnected = false
             _errorFound.postValue(true)
-        }
+        } else _errorFound.postValue(false)
         return isConnected
     }
-
-    companion object {
-        private const val DEFAULT_QUERY = ""
-        private const val DEFAULT_GENRE_MODEL = ""
-    }
-
 }

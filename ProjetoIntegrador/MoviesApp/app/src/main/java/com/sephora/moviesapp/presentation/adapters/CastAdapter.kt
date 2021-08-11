@@ -1,6 +1,5 @@
 package com.sephora.moviesapp.presentation.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +31,6 @@ class CastAdapter (var dataset : MutableList <MovieCreditsEntity.CastEntity>) :
                 binding.apply {
                     txtActorName.text = cast.nameActor
                     txtCharacterName.text = cast.character
-                    cast?.profile_path?.url?.let { Log.d("nome", it) }
                     Glide.with(itemView)
                         .load(cast.profile_path?.original)
                         .transform(CenterCrop())

@@ -3,11 +3,10 @@ package com.sephora.moviesapp.presentation.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sephora.moviesapp.data.database.MoviesDao
 import com.sephora.moviesapp.data.model.*
 import com.sephora.moviesapp.data.repository.LocalRepositoryImp
 import com.sephora.moviesapp.data.repository.RemoteRepositoryImp
-import com.sephora.moviesapp.domain.usecases.*
+import com.sephora.moviesapp.domain.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -19,9 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val repository: RemoteRepositoryImp,
-    private val localRepository: LocalRepositoryImp,
-    private val moviesDao: MoviesDao
-) :
+    private val localRepository: LocalRepositoryImp) :
     ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -31,64 +28,61 @@ class MovieDetailViewModel @Inject constructor(
     val parentalGuidance: LiveData<ParentalGuidanceEntity> = _parentalGuidance
     private var _movieCredits = MutableLiveData<List<MovieCreditsEntity.CastEntity>>()
     val movieCredits: LiveData<List<MovieCreditsEntity.CastEntity>> = _movieCredits
-
-
-    private val mapper = MoviesMapper(moviesDao = moviesDao)
-
+    private val fetchDetailedMovieUseCase = FetchDetailedMovieUseCase(repository = repository)
+    private val deleteFavoriteUseCase = DeleteFavoriteUseCase(localRepository)
+    private val _errorFound = MutableLiveData(CollectionFragmentViewModel.DEFAULT_ERROR_STATE)
+    val errorFound : LiveData<Boolean> = _errorFound
 
     fun getMovieDetails(movieId: Int, local: String) {
         when (local) {
             "local" -> {
-                val fetchDetailedFavoriteUseCase = GetDetailedFavoriteUseCase(
-                    movieId = movieId, localRepository = localRepository
-                )
+                val getDetailedFavoriteUseCase = GetDetailedFavoriteUseCase(
+                    movieId = movieId, localRepository = localRepository)
+
                 CoroutineScope(Dispatchers.IO).launch {
-                    val response = fetchDetailedFavoriteUseCase.execute()
-                    _movieDetailed.postValue(response)
+                    try {
+                        val response = getDetailedFavoriteUseCase.execute()
+                        _movieDetailed.postValue(response)
+
+                    } catch (e: Exception) {
+                        _errorFound.postValue(true)
+                    }
                 }
-
-
             }
             "remote" -> {
-                val fetchDetailedMovieUseCase = FetchDetailedMovieUseCase(
-                    movieId = movieId,
-                    repository = repository
-                )
-
                 compositeDisposable.addAll(
-                    fetchDetailedMovieUseCase.execute()
+                    fetchDetailedMovieUseCase.execute(movieId)
                         .subscribeOn(Schedulers.io())
-                        .map { mapper.transformDetailed(it) }
-                        .subscribe { _movieDetailed.postValue(it) }
-                )
-            }
+                        .subscribe ({ _movieDetailed.postValue(it) },
+                            { _errorFound.postValue(true)})
+                )}
         }
-
     }
 
     fun getParentalGuidance(movieId: Int, local: String) {
         when (local) {
             "local" -> {
                 val getParentalGuidanceUseCase = GetParentalGuidanceUseCase(
-                    movieId = movieId,
-                    localRepository = localRepository
-                )
-                CoroutineScope(Dispatchers.IO).launch {
-                    val response = getParentalGuidanceUseCase.execute()
-                    _parentalGuidance.postValue(response)
-                }
+                    movieId = movieId, localRepository = localRepository)
 
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        val response = getParentalGuidanceUseCase.execute()
+                        _parentalGuidance.postValue(response)
+                    } catch (e: Exception) {
+                        _errorFound.postValue(true)
+                    }
+                }
             }
             "remote" -> {
                 val fetchParentalGuidanceUseCase = FetchParentalGuidanceUseCase(
-                    movieId = movieId, repository = repository
-                )
+                    movieId = movieId, repository = repository)
 
                 compositeDisposable.addAll(
                     fetchParentalGuidanceUseCase.execute()
                         .subscribeOn(Schedulers.io())
-                        .map { mapper.transformParentalGuidance(movieId, it) }
-                        .subscribe { _parentalGuidance.postValue(it) }
+                        .subscribe ({ _parentalGuidance.postValue(it) },
+                            { _errorFound.postValue(true)})
                 )
             }
         }
@@ -101,12 +95,15 @@ class MovieDetailViewModel @Inject constructor(
                 val fetchLocalMovieCreditsUseCase = GetLocalMovieCreditsUseCase(
                     movieId = movieId, localRepository = localRepository
                 )
+
                 CoroutineScope(Dispatchers.IO).launch {
-                    val response = fetchLocalMovieCreditsUseCase.execute()
-                    _movieCredits.postValue(response)
+                    try {
+                        val response = fetchLocalMovieCreditsUseCase.execute()
+                        _movieCredits.postValue(response)
+                    } catch (e: Exception) {
+                        _errorFound.postValue(true)
+                    }
                 }
-
-
             }
             "remote" -> {
                 val fetchMovieCreditsUseCase = FetchMovieCreditsUseCase(
@@ -116,24 +113,31 @@ class MovieDetailViewModel @Inject constructor(
                 compositeDisposable.addAll(
                     fetchMovieCreditsUseCase.execute()
                         .subscribeOn(Schedulers.io())
-                        .map { mapper.transformCast(movieId, it) }
-                        .subscribe { _movieCredits.postValue(it.cast) }
-                )
+                        .subscribe ({ _movieCredits.postValue(it.cast) },
+                            { _errorFound.postValue(true)}))
             }
         }
-
     }
 
     fun changeFavoriteStatus(movieId: Int, isFavorite: Boolean) {
         when (isFavorite) {
             true -> {
-                val deleteFavoriteUseCase = DeleteFavoriteUseCase(localRepository, movieId)
                 CoroutineScope(Dispatchers.IO).launch {
-                    deleteFavoriteUseCase.execute()
+                    try {
+                        deleteFavoriteUseCase.execute(movieId)
+                    } catch (e: Exception) {
+                        _errorFound.postValue(true)
+                    }
                 }
             }
             false -> {
-                localRepository.treatEntity(movieId = movieId)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            localRepository.treatEntity(movieId = movieId)
+                        } catch (e: Exception) {
+                            _errorFound.postValue(true)
+                        }
+                    }
             }
         }
     }

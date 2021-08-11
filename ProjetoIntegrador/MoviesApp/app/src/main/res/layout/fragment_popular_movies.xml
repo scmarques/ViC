@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout    android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -10,17 +9,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.fragments.PopularMoviesFragment">
 
-<androidx.constraintlayout.widget.ConstraintLayout
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="65dp"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rvItemModel">
 
+    </ProgressBar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBtnGenre"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginStart="32dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/gldRvStart"
@@ -44,4 +49,4 @@
         app:layout_constraintGuide_percent="0.03" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
