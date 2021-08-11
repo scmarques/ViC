@@ -10,6 +10,7 @@ import com.sephora.moviesapp.domain.*
 import com.sephora.moviesapp.utils.Functions
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,6 +33,8 @@ class CollectionFragmentViewModel@Inject constructor(
     private val getGenreListUseCase = GetGenreListUseCase(localRepository)
     private val deleteFavoriteUseCase = DeleteFavoriteUseCase(localRepository)
     private val _errorFound = MutableLiveData(DEFAULT_ERROR_STATE)
+    private val fetchGetGenreListUseCase = FetchGenresListUseCase (repository)
+
     val errorFound : LiveData<Boolean> = _errorFound
 
     val moviesList =  currentQuery.switchMap { queryString ->
@@ -46,26 +49,17 @@ class CollectionFragmentViewModel@Inject constructor(
             .cachedIn(viewModelScope).toLiveData()
     }
 
-    fun updateGenresList(isConnected: Boolean) {
-        if (isConnected) {
-            CoroutineScope(Dispatchers.IO).launch {
-                try {
-                    localRepository.treatGenreEntity()
-                } catch (e: Exception) {
-                    _errorFound.postValue(true)
-                }
-            }
-        }
+    fun updateGenresList() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = getGenreListUseCase.execute()
-                _genresList.postValue(response)
+                localRepository.treatGenreEntity()
             } catch (e: Exception) {
                 _errorFound.postValue(true)
             }
         }
     }
+
 
     fun changeFavoriteStatus(movieId: Int, isFavorite: Boolean) {
         when (isFavorite) {
@@ -109,15 +103,24 @@ class CollectionFragmentViewModel@Inject constructor(
         }
     }
 
-    fun getGenreList() {
+    fun getGenreList(remote : Boolean) {
+        if (remote) {
+            compositeDisposable.addAll(
+                fetchGetGenreListUseCase.execute()
+                    .subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                    .subscribe({ _genresList.postValue(it) },
+                        { _errorFound.postValue(true) })
+            )
+        } else {
 
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response = getGenreListUseCase.execute()
-                _genresList.postValue(response)
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val response = getGenreListUseCase.execute()
+                    _genresList.postValue(response)
 
-            } catch (e: Exception) {
-                _errorFound.postValue(true)
+                } catch (e: Exception) {
+                    _errorFound.postValue(true)
+                }
             }
         }
     }

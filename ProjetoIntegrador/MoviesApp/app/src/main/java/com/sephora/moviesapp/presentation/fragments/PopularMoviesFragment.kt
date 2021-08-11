@@ -26,9 +26,16 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
     private val binding get() = _binding!!
     private lateinit var genreListAdapter: GenreAdapter
     private lateinit var movieAdapter: MoviesAdapter
-    private var isConnected: Boolean = false
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewModel.updateGenresList()
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
@@ -57,7 +64,7 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
         genreListAdapter = GenreAdapter(mutableListOf()) { genre -> showByGenre(genre) }
         binding.rvBtnGenre.adapter = genreListAdapter
 
-        viewModel.updateGenresList(isConnected)
+        viewModel.getGenreList(remote = true)
         setupObserveGenresList()
 
         viewModel.filterByGenre("")
@@ -102,10 +109,8 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
 
     override fun onResume() {
         super.onResume()
-        setupErrorFoundObserver()
         viewModel.filterByGenre("")
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

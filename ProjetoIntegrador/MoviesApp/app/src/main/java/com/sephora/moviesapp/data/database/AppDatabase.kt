@@ -7,7 +7,7 @@ import com.sephora.moviesapp.data.model.*
 
 @Database(entities = [DetailedMovieEntity::class, ParentalGuidanceEntity::class,
     MovieCreditsEntity.CastEntity::class, GenreListEntity.GenreEntity::class],
-    version = 1, exportSchema = false)
+    version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 
 abstract class AppDatabase : RoomDatabase () {

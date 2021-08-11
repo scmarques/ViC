@@ -31,7 +31,7 @@ class FavoriteMoviesFragment : Fragment(R.layout.fragment_favorite_movies) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel.getGenreList()
+        viewModel.getGenreList(remote = false)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
