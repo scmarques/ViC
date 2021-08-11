@@ -7,6 +7,8 @@ import android.view.*
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sephora.moviesapp.*
@@ -28,14 +30,6 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
     private lateinit var movieAdapter: MoviesAdapter
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewModel.updateGenresList()
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
@@ -83,7 +77,7 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
                 movieId = movie.movieId,
                 local = "remote"
             )
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun showByGenre(genreId: Int) {
@@ -108,8 +102,11 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
     }
 
     override fun onResume() {
-        super.onResume()
         viewModel.filterByGenre("")
+        val isConnected = viewModel.checkNetWorkStatus(requireContext())
+        if(isConnected) viewModel.updateGenresList(isConnected)
+        super.onResume()
+
     }
 
     override fun onDestroyView() {
@@ -122,7 +119,7 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
             if (it) {
                 val action =
                     CollectionFragmentDirections.actionCollectionFragmentToSystemFailedFragment()
-                findNavController().navigate(action)
+                findNavController().safeNavigate(action)
             }
         })
     }
@@ -144,9 +141,13 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
                       val action =
                           CollectionFragmentDirections.actionCollectionFragmentToSearchResultFragment(
                               query = s.toString(), local = "remote")
-                      findNavController().navigate(action)
+                      findNavController().safeNavigate(action)
             }
         })
+    }
+
+    fun NavController.safeNavigate(direction: NavDirections) {
+        currentDestination?.getAction(direction.actionId)?.run { navigate(direction) }
     }
 }
 

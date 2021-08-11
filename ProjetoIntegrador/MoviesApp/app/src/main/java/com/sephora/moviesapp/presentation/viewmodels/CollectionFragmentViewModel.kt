@@ -49,17 +49,17 @@ class CollectionFragmentViewModel@Inject constructor(
             .cachedIn(viewModelScope).toLiveData()
     }
 
-    fun updateGenresList() {
-
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                localRepository.treatGenreEntity()
-            } catch (e: Exception) {
-                _errorFound.postValue(true)
+    fun updateGenresList(isConnected : Boolean) {
+        if (isConnected) {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    localRepository.treatGenreEntity()
+                } catch (e: Exception) {
+                    _errorFound.postValue(true)
+                }
             }
         }
     }
-
 
     fun changeFavoriteStatus(movieId: Int, isFavorite: Boolean) {
         when (isFavorite) {
@@ -107,7 +107,7 @@ class CollectionFragmentViewModel@Inject constructor(
         if (remote) {
             compositeDisposable.addAll(
                 fetchGetGenreListUseCase.execute()
-                    .subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                    .subscribeOn(Schedulers.io())
                     .subscribe({ _genresList.postValue(it) },
                         { _errorFound.postValue(true) })
             )
@@ -144,4 +144,5 @@ class CollectionFragmentViewModel@Inject constructor(
         } else _errorFound.postValue(false)
         return isConnected
     }
+
 }

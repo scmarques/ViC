@@ -20,7 +20,7 @@
         app:tabMode="scrollable"
         app:tabGravity="start"
         android:paddingStart="0dp"
-        app:tabPaddingTop="-24dp"
+        app:tabPaddingTop="-20dp"
         app:tabSelectedTextColor="@color/grey_title"
         app:tabTextAppearance="@style/MainTabTextAppearance" />
 

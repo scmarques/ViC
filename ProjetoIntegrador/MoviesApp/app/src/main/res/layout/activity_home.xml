@@ -20,7 +20,6 @@
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:minHeight="?attr/actionBarSize"
-        android:paddingStart="0dp"
         android:paddingEnd="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
