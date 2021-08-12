@@ -40,10 +40,10 @@ class CollectionFragment : Fragment(R.layout.fragment_collection_fragments){
         TabLayoutMediator(tablayout, viewpager) { tab, position ->
             when (position) {
                 1 -> {
-                    tab.text = "Favoritos"
+                    tab.text = getString(R.string.favorites)
                 }
                 else -> {
-                    tab.text = "Todos os filmes"
+                    tab.text = getString(R.string.all_movies)
                 }
             }
         }.attach()

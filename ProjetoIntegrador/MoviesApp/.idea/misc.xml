@@ -24,9 +24,26 @@
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_genre_filled.xml" value="0.1" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_movie_item.xml" value="0.27761194029850744" />
         <entry key="..\:/Users/sepho/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/model_single_genre_filled.xml" value="0.1" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.25" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.2203125" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.2203125" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/drawable/line_1.xml" value="0.2203125" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/drawable/tab_item_selector.xml" value="0.2203125" />
         <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/activity_home.xml" value="0.20102564102564102" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/dialog_system_failed.xml" value="0.18055555555555555" />
         <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/fragment_collection_fragments.xml" value="0.1" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/fragment_favorite_movies.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/fragment_movie_detail.xml" value="0.25" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/fragment_movie_loading.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/fragment_popular_movies.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/fragment_search_result.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/model_cast.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/model_genre_border.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/model_genre_filled.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/model_movie_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/model_search_button.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/layout/model_search_field.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sepho/OneDrive/Documentos/GitHub/ViC/ProjetoIntegrador/MoviesApp/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

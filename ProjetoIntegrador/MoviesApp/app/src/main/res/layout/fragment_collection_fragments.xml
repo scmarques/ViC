@@ -21,7 +21,7 @@
         app:tabGravity="start"
         android:paddingStart="0dp"
         app:tabPaddingTop="-20dp"
-        app:tabSelectedTextColor="@color/grey_title"
+        app:tabSelectedTextColor="?attr/colorSecondary"
         app:tabTextAppearance="@style/MainTabTextAppearance" />
 
     <androidx.viewpager2.widget.ViewPager2

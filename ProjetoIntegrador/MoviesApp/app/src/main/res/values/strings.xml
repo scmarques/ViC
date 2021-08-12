@@ -19,4 +19,7 @@
     <string name="poster_press">Poster divulgação</string>
     <string name="favorite_movie">Filme favorito</string>
     <string name="users_rating">Avaliação dos usuários</string>
+    <string name="all_movies">Todos os filmes</string>
+    <string name="favorites">Favoritos</string>
+    <string name="close_button">Fechar</string>
 </resources>

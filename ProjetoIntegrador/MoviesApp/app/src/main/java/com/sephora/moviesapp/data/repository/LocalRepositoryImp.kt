@@ -10,9 +10,6 @@ import com.sephora.moviesapp.data.model.*
 import io.reactivex.Flowable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -80,22 +77,11 @@ class LocalRepositoryImp
     fun insertCastList(castEntity: List<MovieCreditsEntity.CastEntity>) {
         moviesDao.insertCastList(castEntity)
     }
+
     fun insertGenreList(genreListEntity: List<GenreListEntity.GenreEntity>) {
         moviesDao.insertGenreList(genreListEntity)
     }
 
-    fun changeFavoriteStatus(movieId : Int, isFavorite : Boolean) {
-        when (isFavorite) {
-            true -> {
-                CoroutineScope(Dispatchers.IO).launch {
-                    moviesDao.deleteFavorite(movieId)
-                }
-            }
-            false -> {
-                treatEntity(movieId = movieId)
-            }
-        }
-    }
 
     fun treatGenreEntity () {
 

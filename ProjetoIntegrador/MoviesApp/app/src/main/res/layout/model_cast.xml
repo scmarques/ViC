@@ -22,7 +22,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@color/blue_title"
+        android:textColor="?attr/colorOnPrimary"
         app:layout_constraintStart_toStartOf="@+id/imgCastActor"
         app:layout_constraintTop_toBottomOf="@+id/imgCastActor"
         tools:text="Christian Bale" />

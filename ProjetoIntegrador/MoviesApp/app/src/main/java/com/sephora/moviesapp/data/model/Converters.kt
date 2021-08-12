@@ -20,24 +20,4 @@ class Converters {
 
     @TypeConverter
     fun jsonToList(value: String) = Gson().fromJson(value, Array<GenreModel>::class.java).toList()
-/*
-    @TypeConverter
-    fun listIntToJson(value: List<Int>?) = Gson().toJson(value)
-
-    @TypeConverter
-    fun jsonToIntList(value: String) = Gson().fromJson(value, Array<Int>::class.java).toList()
-
-    @TypeConverter
-    fun castListToJson(value: List<MovieCreditsEntity.CastEntity>?) = Gson().toJson(value)
-
-    @TypeConverter
-    fun jsonToCastList(value: String) =
-        Gson().fromJson(value, Array<MovieCreditsEntity.CastEntity>::class.java).toList()
-
-    @TypeConverter
-    fun genreListToJson(value: List<GenreListEntity.GenreEntity>?) = Gson().toJson(value)
-
-    @TypeConverter
-    fun jsonToGenreList(value: String) =
-        Gson().fromJson(value, Array<GenreListEntity.GenreEntity>::class.java).toList()*/
 }

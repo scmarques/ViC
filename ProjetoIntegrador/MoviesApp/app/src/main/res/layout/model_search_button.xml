@@ -3,5 +3,5 @@
 <androidx.appcompat.widget.AppCompatImageButton android:layout_width="24dp"
     android:layout_height="24dp"
     android:src="@drawable/ic_search_black_24dp"
-    android:background="@color/white"
+    android:background="@android:color/transparent"
     xmlns:android="http://schemas.android.com/apk/res/android" />

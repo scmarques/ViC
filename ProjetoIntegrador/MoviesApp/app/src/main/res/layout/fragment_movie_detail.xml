@@ -40,7 +40,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="15dp"
-            android:background="@color/white"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/favorite"
             android:src="@drawable/ic_baseline_favorite_border_24"
             app:layout_constraintBottom_toBottomOf="@+id/txtMovieTitle"
@@ -84,6 +84,7 @@
 
         <TextView
             android:id="@+id/txtRuntime"
+            style="@style/InfoMovieDetailsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"

@@ -31,7 +31,7 @@
 
     <style name="DetailedMovieTitle">
         <item name="android:lineHeight">40dp</item>
-        <item name="android:textColor">@color/blue_title</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textFontWeight">900</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="android:textSize">@dimen/large_sp</item>
@@ -41,7 +41,7 @@
 
     <style name="InferiorMovieTitle">
         <item name="android:lineHeight">40dp</item>
-        <item name="android:textColor">@color/blue_title</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textFontWeight">700</item>
         <item name="android:textSize">@dimen/large_sp</item>
         <item name="android:fontFamily">@font/lato</item>
@@ -117,7 +117,7 @@
 
     <style name="TitlesInDetailedMovie">
         <item name="android:lineHeight">28dp</item>
-        <item name="android:textColor">@color/blue_title</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textFontWeight">500</item>
         <item name="android:textSize">@dimen/medium_sp</item>
         <item name="android:fontFamily">@font/lato</item>
@@ -166,7 +166,7 @@
 
     <style name="ChipButtonStyle">
         <item name="android:fontFamily">@font/lato</item>
-        <item name="android:textColor">@color/blue_title</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textSize">@dimen/small_sp</item>
         <item name="android:height">36sp</item>
     </style>
