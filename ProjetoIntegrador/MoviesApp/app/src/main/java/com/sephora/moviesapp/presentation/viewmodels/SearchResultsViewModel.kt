@@ -10,7 +10,7 @@ import com.sephora.moviesapp.data.repository.RemoteRepositoryImp
 import com.sephora.moviesapp.domain.DeleteFavoriteUseCase
 import com.sephora.moviesapp.domain.GetGenreListUseCase
 import com.sephora.moviesapp.domain.TreatEntityUseCase
-import com.sephora.moviesapp.utils.Functions
+import com.sephora.moviesapp.utils.checkNetworkStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -94,8 +94,7 @@ class SearchResultsViewModel @Inject constructor(
 
     fun checkNetWorkStatus(context: Context): Boolean {
         var isConnected = true
-        val status = Functions()
-        if (!status.checkNetworkStatus(context)) {
+        if (checkNetworkStatus(context)) {
             isConnected = false
             _errorFound.postValue(true)
         }

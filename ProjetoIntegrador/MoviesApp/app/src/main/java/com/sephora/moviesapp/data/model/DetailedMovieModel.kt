@@ -14,7 +14,6 @@ import com.google.gson.annotations.SerializedName
         @SerializedName("backdrop_path") val backdropPath: String?,
         @SerializedName("poster_path") val posterPath: String,
         var isFavorite : Int,
-        var allGenres : String
         ) {
 
         fun runtimeMask(runtime : Int?): String {

@@ -3,12 +3,11 @@ package com.sephora.moviesapp.presentation.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.paging.ExperimentalPagingApi
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.sephora.moviesapp.presentation.fragments.FavoriteMoviesFragment
 import com.sephora.moviesapp.presentation.fragments.PopularMoviesFragment
 
-class ScreenAdapter(fragmentManager : FragmentManager, lifecycle : Lifecycle) :
+class ScreenAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {

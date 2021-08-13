@@ -17,6 +17,7 @@ import com.sephora.moviesapp.databinding.FragmentPopularMoviesBinding
 import com.sephora.moviesapp.presentation.adapters.GenreAdapter
 import com.sephora.moviesapp.presentation.adapters.MoviesAdapter
 import com.sephora.moviesapp.presentation.adapters.MoviesLoadStateAdapter
+import com.sephora.moviesapp.presentation.fragments.SearchResultFragment.Companion.charQuery
 import com.sephora.moviesapp.presentation.viewmodels.CollectionFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -138,9 +139,10 @@ class PopularMoviesFragment : Fragment(R.layout.fragment_popular_movies) {
                 s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                charQuery = s.toString()
                       val action =
                           CollectionFragmentDirections.actionCollectionFragmentToSearchResultFragment(
-                              query = s.toString(), local = "remote")
+                              local = "remote")
                       findNavController().safeNavigate(action)
             }
         })

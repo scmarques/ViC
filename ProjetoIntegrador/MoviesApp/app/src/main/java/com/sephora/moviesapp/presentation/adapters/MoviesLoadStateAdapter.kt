@@ -11,8 +11,10 @@ import com.sephora.moviesapp.databinding.FragmentMovieLoadingBinding
 class MoviesLoadStateAdapter : LoadStateAdapter<MoviesLoadStateAdapter.LoadStateViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
-        val binding = FragmentMovieLoadingBinding .inflate(LayoutInflater.from(parent.context),
-        parent, false)
+        val binding = FragmentMovieLoadingBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent, false
+        )
 
         return LoadStateViewHolder(binding)
     }
@@ -21,14 +23,11 @@ class MoviesLoadStateAdapter : LoadStateAdapter<MoviesLoadStateAdapter.LoadState
         holder.bind(loadState)
     }
 
-    class LoadStateViewHolder(private val binding : FragmentMovieLoadingBinding) :
-            RecyclerView.ViewHolder(binding.root){
+    class LoadStateViewHolder(private val binding: FragmentMovieLoadingBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-                fun bind (loadState: LoadState){
-                    binding.progressBar.isVisible = loadState is LoadState.Loading
-                }
-            }
-
-
-
+        fun bind(loadState: LoadState) {
+            binding.progressBar.isVisible = loadState is LoadState.Loading
+        }
+    }
 }

@@ -5,7 +5,6 @@ import androidx.paging.rxjava2.RxPagingSource
 import com.sephora.moviesapp.data.api.TmdbService
 import com.sephora.moviesapp.data.database.MoviesDao
 import com.sephora.moviesapp.data.model.*
-import com.sephora.moviesapp.data.repository.LocalRepositoryImp
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 

@@ -33,19 +33,19 @@ interface TmdbService {
     @GET("movie/{movie_id}/credits")
     fun getMovieCredits(
         @Path("movie_id") movie_id: Int,
-        @Query("api_key") api_key: String = Credentials.API_KEY)
-     : Flowable<MovieCreditsResponse>
+        @Query("api_key") api_key: String = Credentials.API_KEY
+    ) : Flowable<MovieCreditsResponse>
 
     @GET("movie/{movie_id}")
     fun getDetailedMovie(
         @Path("movie_id") movie_id: Int,
         @Query("api_key") api_key: String = Credentials.API_KEY,
-        @Query("language") language: String = "pt-BR")
-            : Flowable<DetailedMovieModel>
+        @Query("language") language: String = "pt-BR"
+    ): Flowable<DetailedMovieModel>
 
     @GET("movie/{movie_id}/release_dates")
     fun getReleaseDateResponse(
         @Path("movie_id") movie_id: Int,
-        @Query("api_key") api_key: String = Credentials.API_KEY)
-            : Flowable<ReleaseDatesResponse>
+        @Query("api_key") api_key: String = Credentials.API_KEY
+    ): Flowable<ReleaseDatesResponse>
 }

@@ -1,11 +1,9 @@
 package com.sephora.moviesapp.data.model
 
-import android.util.Log
 import com.sephora.moviesapp.data.database.MoviesDao
 import javax.inject.Inject
 
 class MoviesMapper @Inject constructor (private val moviesDao: MoviesDao) {
-
 
     fun transformDetailed(
         detailedMovieModel: DetailedMovieModel): DetailedMovieEntity {
@@ -85,18 +83,6 @@ class MoviesMapper @Inject constructor (private val moviesDao: MoviesDao) {
                 }
         }
     }
-
-    fun transformGenreModel(genre: GenreListEntity.GenreEntity
-    ) : GenreModel {
-
-        return with(genre) {
-
-               GenreModel(
-                    name = genreName ,
-                    genreId = genreId
-                )
-            }
-        }
 
     fun transformIntoBasic(allMoviesResponse: AllMoviesResponse): MoviesList {
 

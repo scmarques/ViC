@@ -23,6 +23,7 @@ _________________________________________________________________
 
 * MinhaAgenda2.0 --> Aplicação de agenda telefônica redesenhada para navegação entre activities por intents.
 
+* ProjetoIntegrador --> Projeto de conclusão do programa de formação Vitória Code: aplicativo de filmes que busca informações da API TMDB e oferece ao usuário opções de busca por título, filtro por gênero, armazenar localmente os favoritos e exibir detalhes sobre o filme selecionado.
 
 &nbsp;
 

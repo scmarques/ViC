@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,17 +15,19 @@ import com.sephora.moviesapp.databinding.FragmentMovieDetailBinding
 import com.sephora.moviesapp.presentation.viewmodels.MovieDetailViewModel
 import com.sephora.moviesapp.presentation.adapters.CastAdapter
 import com.sephora.moviesapp.presentation.adapters.GenresInDetailAdapter
+import com.sephora.moviesapp.presentation.fragments.SearchResultFragment.Companion.charQuery
+import com.sephora.moviesapp.utils.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
-    private lateinit var binding : FragmentMovieDetailBinding
+    private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var castAdapter: CastAdapter
     private lateinit var genresOfMovieAdapter: GenresInDetailAdapter
     private lateinit var viewModel: MovieDetailViewModel
-    private val args : MovieDetailFragmentArgs by navArgs()
+    private val args: MovieDetailFragmentArgs by navArgs()
 
 
     override fun onResume() {
@@ -43,7 +43,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         viewModel = ViewModelProvider(this).get(MovieDetailViewModel::class.java)
 
         binding.rvDetailCast.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.HORIZONTAL,false)
+            requireContext(), LinearLayoutManager.HORIZONTAL, false
+        )
         castAdapter = CastAdapter(mutableListOf())
         binding.rvDetailCast.adapter = castAdapter
 
@@ -52,7 +53,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         binding.rvGenresOfMovie.layoutManager = LinearLayoutManager(
             requireContext(),
             LinearLayoutManager.HORIZONTAL,
-            false)
+            false
+        )
 
 
         viewModel.getMovieDetails(args.movieId, args.local)
@@ -65,8 +67,9 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         setupObserveParentalGuidance()
 
         setupErrorFoundObserver()
-        binding.btnReturn.setOnClickListener(){
-                requireActivity().onBackPressed()
+        binding.btnReturn.setOnClickListener() {
+            charQuery = ""
+            requireActivity().onBackPressed()
         }
 
     }
@@ -80,9 +83,9 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                     .into(binding.imgDetailBanner)
                 binding.loading.visibility = View.GONE
             }
-            if(it.isFavorite == 1) binding.btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
+            if (it.isFavorite == 1) binding.btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
             binding.txtMovieTitle.text = it?.title
-            binding.txtVoteAverage.text =  it?.voteAverage
+            binding.txtVoteAverage.text = it?.voteAverage
             binding.txtMovieYear.text = it?.releaseYear
             binding.txtOverview.text = it?.movieOverview
             binding.txtRuntime.text = it?.runtime
@@ -91,9 +94,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             val isFavorite = it?.isFavorite == 1
             binding.btnFavorite.setOnClickListener {
 
-                movie -> viewModel.changeFavoriteStatus(it.movieId, it.isFavorite == 1)
-                    if (isFavorite) binding.btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-                    else binding.btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
+                    movie ->
+                viewModel.changeFavoriteStatus(it.movieId, it.isFavorite == 1)
+                if (isFavorite) binding.btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                else binding.btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
 
             }
         })
@@ -106,7 +110,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         })
     }
 
-    fun setupObserveParentalGuidance(){
+    fun setupObserveParentalGuidance() {
         viewModel.parentalGuidance.observe(viewLifecycleOwner,
             {
                 binding.txtParentalGuidance.text = it.parentalGuidance
@@ -116,7 +120,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     fun setupErrorFoundObserver() {
         viewModel.errorFound.observe(viewLifecycleOwner, {
             if (it) {
-                val action = MovieDetailFragmentDirections.actionMovieDetailFragmentToSystemFailedFragment()
+                val action =
+                    MovieDetailFragmentDirections.actionMovieDetailFragmentToSystemFailedFragment()
                 findNavController().safeNavigate(action)
             }
         })
@@ -127,8 +132,5 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         (activity as AppCompatActivity).supportActionBar?.show()
     }
 
-    fun NavController.safeNavigate(direction: NavDirections) {
-        currentDestination?.getAction(direction.actionId)?.run { navigate(direction) }
-    }
 }
 

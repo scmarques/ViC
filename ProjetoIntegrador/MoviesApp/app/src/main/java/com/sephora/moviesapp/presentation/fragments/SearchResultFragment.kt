@@ -1,13 +1,11 @@
 package com.sephora.moviesapp.presentation.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,6 +17,8 @@ import com.sephora.moviesapp.data.model.DetailedMovieEntity
 import com.sephora.moviesapp.databinding.FragmentSearchResultBinding
 import com.sephora.moviesapp.presentation.adapters.*
 import com.sephora.moviesapp.presentation.viewmodels.SearchResultsViewModel
+import com.sephora.moviesapp.utils.hideKeyboard
+import com.sephora.moviesapp.utils.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -123,7 +123,7 @@ class SearchResultFragment : Fragment(R.layout.fragment_search_result) {
         viewModel.errorFound.observe(viewLifecycleOwner, {
             if (it) {
                 val action = SearchResultFragmentDirections.actionSearchResultFragmentToSystemFailedFragment()
-                findNavController().navigate(action)
+                findNavController().safeNavigate(action)
             }
         })
     }
@@ -178,7 +178,7 @@ class SearchResultFragment : Fragment(R.layout.fragment_search_result) {
                 }
             }
         })
-        searchField.setText(args.query)
+        searchField.setText(charQuery)
     }
 
     override fun onDestroyView() {
@@ -186,9 +186,9 @@ class SearchResultFragment : Fragment(R.layout.fragment_search_result) {
         _binding = null
     }
 
-    private fun View.hideKeyboard() {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(windowToken, 0)
+    companion object{
+        var charQuery = ""
     }
+
 }
 

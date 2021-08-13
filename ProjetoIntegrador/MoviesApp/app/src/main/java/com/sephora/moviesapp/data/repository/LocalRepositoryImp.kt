@@ -58,10 +58,6 @@ class LocalRepositoryImp
         moviesDao.deleteFavorite(movieId)
     }
 
-    fun insertParentalGuidance(parentalGuidance: ParentalGuidanceEntity) {
-        moviesDao.insertParentalGuidance(parentalGuidance)
-    }
-
     fun getParentalGuidance(movieId: Int) : ParentalGuidanceEntity{
       return moviesDao.getParentalGuidance(movieId)
     }
@@ -74,9 +70,6 @@ class LocalRepositoryImp
         return moviesDao.getCastList(movieId)
     }
 
-    fun insertCastList(castEntity: List<MovieCreditsEntity.CastEntity>) {
-        moviesDao.insertCastList(castEntity)
-    }
 
     fun insertGenreList(genreListEntity: List<GenreListEntity.GenreEntity>) {
         moviesDao.insertGenreList(genreListEntity)
@@ -129,13 +122,4 @@ class LocalRepositoryImp
         )
     }
 
-    fun checkInDatabase(movieId: Int): Int {
-        var isFavorite = false
-
-        moviesDao.isFavorite(movieId)
-            .map {
-                isFavorite = true
-            }
-        return if (isFavorite) 1 else 0
-    }
 }

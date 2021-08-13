@@ -51,9 +51,6 @@
         <argument
             android:name="local"
             app:argType="string" />
-        <argument
-            android:name="query"
-            app:argType="string" />
         <action
             android:id="@+id/action_searchResultFragment_to_systemFailedFragment"
             app:destination="@id/systemFailedFragment" />

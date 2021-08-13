@@ -1,15 +1,9 @@
 package com.sephora.moviesapp.presentation.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -18,6 +12,7 @@ import com.sephora.moviesapp.R
 import com.sephora.moviesapp.databinding.FragmentCollectionFragmentsBinding
 import com.sephora.moviesapp.presentation.adapters.ScreenAdapter
 import com.sephora.moviesapp.presentation.viewmodels.CollectionFragmentViewModel
+import com.sephora.moviesapp.utils.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -65,11 +60,9 @@ class CollectionFragment : Fragment(R.layout.fragment_collection_fragments){
                     tablayout.setScrollPosition(1, 0f, true)
                     viewpager.currentItem = 1
                 }
-            })
+            }
+        )
     }
 
-    fun NavController.safeNavigate(direction: NavDirections) {
-        currentDestination?.getAction(direction.actionId)?.run { navigate(direction) }
-    }
 
 }

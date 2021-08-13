@@ -7,7 +7,7 @@ import com.sephora.moviesapp.data.model.GenreListEntity
 import com.sephora.moviesapp.data.repository.LocalRepositoryImp
 import com.sephora.moviesapp.data.repository.RemoteRepositoryImp
 import com.sephora.moviesapp.domain.*
-import com.sephora.moviesapp.utils.Functions
+import com.sephora.moviesapp.utils.checkNetworkStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -137,8 +137,7 @@ class CollectionFragmentViewModel@Inject constructor(
 
     fun checkNetWorkStatus(context: Context): Boolean {
         var isConnected = true
-        val status = Functions()
-        if (!status.checkNetworkStatus(context)) {
+             if (!checkNetworkStatus(context)) {
             isConnected = false
             _errorFound.postValue(true)
         } else _errorFound.postValue(false)
