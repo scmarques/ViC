@@ -5,7 +5,7 @@ _________________________________________________________________
 -----------------------------------------------------------------
 * Final project of Vitória Code's program
 
-Movies app retrieves movies information from TMDB API and offers the user the possibility to store its favorites movies locally.
+Movies app retrieves movies data from TMDB API and offers the user the possibility to store its favorites movies locally.
 
 It's possible to get all movies from API and filter by genre or search by and specific movie title. 
 
@@ -39,8 +39,8 @@ _________________________________________________________________
 #
 All movies       |  Favorite Movies
 :-------------------------:|:-------------------------:
-<img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda2.0/Screenshot_AllMovies.png" width="280" height="600">  |  <img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda2.0/Screenshot__Favorites.png" width="280" height="600">
+<img src = "https://github.com/scmarques/ViC/blob/master/ProjetoIntegrador/Screenshot_AllMovies.png" width="280" height="600">  |  <img src = "https://github.com/scmarques/ViC/blob/master/ProjetoIntegrador/Screenshot_Favorites.png" width="280" height="600">
 Movie Details      |  Search Mode
-<img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda2.0/Screenshot_MovieDetails.png" width="280" height="600">  |  <img src = "https://github.com/scmarques/ViC/blob/master/MinhaAgenda2.0/Screen_SearchMode.png" width="280" height="600">
+<img src = "https://github.com/scmarques/ViC/blob/master/ProjetoIntegrador/Screenshot_MovieDetails.png" width="280" height="600">  |  <img src = "https://github.com/scmarques/ViC/blob/master/ProjetoIntegrador/Screenshot_SearchMode.png" width="280" height="600">
 #
 
